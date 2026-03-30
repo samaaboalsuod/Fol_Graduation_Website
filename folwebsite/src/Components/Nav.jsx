@@ -1,10 +1,17 @@
 import React from 'react';
+import { useState } from 'react';
 import './Nav.css';
+import Menu from './Menu';
+
+
+
 import logo from '../Assets/Icons/logo.svg';
 import burger from '../Assets/Icons/burgerMenu.svg';
 
 const Nav = () => {
-  // Mapping 5 flowers to spread across the top
+
+  const [isOpen, setIsOpen] = useState(false);
+  // Mapping 5 flowers
   const flowers = [
     { id: 1, left: '8%', scale: 0.6, delay: '0.1s' },
     { id: 2, left: '22%', scale: 0.9, delay: '0.3s' },
@@ -15,14 +22,20 @@ const Nav = () => {
 
   return (
     <nav>
-      {/* 1. The Wave Background (Hidden by default) */}
+        
+     {/* 1. The Full-Screen Menu Overlay */}
+      {isOpen && <Menu closeMenu={() => setIsOpen(false)} />}
+
+      {/* 2. Your Wave and Flowers (only show when menu is closed) */}
+      {!isOpen && <div className="nav-wave-bg">...</div>}
+
       <div className="nav-wave-bg">
         <svg viewBox="0 0 1280 80" preserveAspectRatio="none">
            <path d="M0 0H1280V59.6865C1280 59.6865 1182.97 79.6865 1120 79.6865C1057.03 79.6865 1022.97 59.6865 960 59.6865C897.03 59.6865 862.97 79.6865 800 79.6865C737.03 79.6865 702.97 59.6865 640 59.6865C577.03 59.6865 542.97 79.6865 480 79.6865C417.03 79.6865 382.97 59.6865 320 59.6865C257.03 59.6865 222.97 79.6865 160 79.6865C97.0299 79.6865 0 59.6865 0 59.6865V0Z" fill="#FAFAEA"/>
         </svg>
       </div>
 
-      {/* 2. The Flowers (Hidden by default) */}
+      
       {flowers.map((f) => (
         <div key={f.id} className="flower-layer" style={{ left: f.left, transform: `scale(${f.scale})`, transitionDelay: f.delay }}>
           <svg width="32" height="31" viewBox="0 0 32 31" fill="none">
@@ -31,10 +44,16 @@ const Nav = () => {
         </div>
       ))}
 
-      {/* 3. Your Original Structure (Preserved) */}
+      
       <header>
         <img src={logo} alt="logo" />
-        <img src={burger} alt="menu"  />
+        <img 
+          src={burger} 
+          alt="menu" 
+          className="nav-item" 
+          onClick={() => setIsOpen(true)} 
+          style={{ cursor: 'pointer' }}
+        />
       </header>
     </nav>
   );

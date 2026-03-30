@@ -2,6 +2,7 @@
     --lightText: #FAFAEA;
     --darkText: #082F19;
     --bgGradient: radial-gradient(50% 50% at 50% 50%, #0F3F24 0%, #082F19 100%);
+    --arabicFont: "Tajawal", sans-serif;
 }
 
 *{
@@ -14,5 +15,8 @@
 body{
     background: var(--bgGradient);
     min-height: 100vh;
+}
+button{
+    all: unset;
 }
 
