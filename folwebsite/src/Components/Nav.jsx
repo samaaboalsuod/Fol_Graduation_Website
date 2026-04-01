@@ -5,7 +5,7 @@ import Menu from './Menu';
 
 
 
-import logo from '../Assets/Icons/logo.svg';
+import logo from '../Assets/Icons/logo.svg'; 
 import burger from '../Assets/Icons/burgerMenu.svg';
 
 const Nav = () => {
