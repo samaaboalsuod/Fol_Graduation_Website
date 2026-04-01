@@ -14,7 +14,7 @@ const ScrollHero = () => {
         <div className="section-green hero-hero">
           {/* PLACEHOLDER FOR NAVBAR, LOGO, MAIN ARABIC TEXT FROM Figma */}
           {/* We'll use absolute positioning for these elements */}
-          <div className="navbar-container">/* Logo, Burger */</div>
+
           <div className="main-text-container"><h1>اختر نباتك...</h1></div>
           <div className="secondary-text-container">...</div>
           <div className="cta-container">...</div>

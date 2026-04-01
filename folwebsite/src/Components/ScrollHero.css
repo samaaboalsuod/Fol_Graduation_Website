@@ -20,7 +20,7 @@
 .section-green {
     width: 100%;
     height: 100vh; /* One full screen */
-    background-color: #082F19; /* Your figma green */
+    /* background-color: #082F19;  */
     position: relative;
 }
 
@@ -59,4 +59,45 @@
 /* Creates the length of page needed to animate over */
 .scroll-trigger {
     height: 200vh; /* About 2.5 screens worth of scrolling for the move */
+}
+
+.hero-3d-overlay, 
+.hero-3d-container,
+canvas {
+    /* Prevents the canvas from ever creating its own scrollbar */
+    overflow: hidden !important; 
+    display: block;
+    /* Ensure it doesn't push the page wider */
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+/* 1. KILL ALL SCROLLBARS */
+html, body, .hero-viewport, .hero-3d-overlay {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+body::-webkit-scrollbar, 
+.hero-viewport::-webkit-scrollbar,
+.hero-3d-overlay::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* 2. HARDWARE ACCELERATE THE IMAGE */
+.section-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* This forces the browser to use the GPU, making the fade much smoother */
+    will-change: filter;
+    transform: translateZ(0); 
+    filter: brightness(0.1); 
+}
+
+/* 3. ENSURE CANVAS DOESN'T PUSH HEIGHT */
+canvas {
+    display: block;
+    user-select: none;
+    pointer-events: none;
 }

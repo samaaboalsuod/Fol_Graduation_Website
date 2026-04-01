@@ -6,11 +6,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// 1. Move ALL model-specific logic here (GSAP and useFrame)
 const PlantModel = ({ modelRef }) => {
   const { scene } = useGLTF('/heroModel.glb'); 
 
-  // Gentle idle rotation while waiting for scroll
   useFrame(() => {
     if (modelRef.current) {
       modelRef.current.rotation.y += 0.002;
@@ -21,7 +19,6 @@ const PlantModel = ({ modelRef }) => {
     if (!modelRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Starting state
       gsap.set(modelRef.current.position, { x: 0, y: -1.3, z: 3 });
       gsap.set(modelRef.current.scale, { x: 2.5, y: 2.5, z: 2.5 });
 
@@ -30,29 +27,77 @@ const PlantModel = ({ modelRef }) => {
           trigger: '.hero-viewport',
           start: 'top top',
           end: 'bottom bottom',
-          scrub: 1.5,
+          scrub: 2.5, // Slightly higher for that 'floaty' feel
           invalidateOnRefresh: true,
         }
       });
 
-      tl.to(modelRef.current.position, { x: 1.43, y: -1.4, z: 0 }, 0)
-        .to(modelRef.current.scale, { x: 1.8, y: 1.8, z: 1.8 }, 0)
-        .to(modelRef.current.rotation, { y: Math.PI * 2 }, 0);
+      // 1. GENTLE LIGHTING (Ends at 60% of the scroll)
+      tl.fromTo(".section-photo img", 
+        { filter: "brightness(0.1)" }, 
+        { 
+          filter: "brightness(1.0)", 
+          duration: 0.6, 
+          // Sine is much softer than Power eases for lighting
+          ease: "sine.inOut" 
+        }, 
+        0 // Starts immediately
+      );
+
+      // 2. PLANT MOVEMENT
+      tl.to(modelRef.current.position, { 
+        x: () => window.innerWidth > 1200 ? 1.8 : 1.43, 
+        y: () => window.innerHeight > 600 ? -1.8 : -2.5,
+        z: 0,
+        duration: 1, 
+        ease: "sine.inOut" // Changed to inOut to match the 'gentle' vibe
+      }, 0.1); // Delay the movement slightly so the room 'wakes up' first
+
+      tl.to(modelRef.current.scale, { 
+        x: () => window.innerWidth > 1200 ? 1.8 : 1.6, 
+        y: () => window.innerWidth > 1200 ? 1.8 : 1.6, 
+        z: () => window.innerWidth > 1200 ? 1.8 : 1.6,
+        duration: 1,
+        ease: "power1.inOut"
+      }, 0.1);
+
+      tl.to(modelRef.current.rotation, { 
+        y: Math.PI * 1, 
+        duration: 1, 
+        ease: "none" 
+      }, 0);
+
+      // 2. REFINED LIGHTING: Happens earlier and smoother
+      tl.fromTo(".section-photo img", 
+        { filter: "brightness(0.1)" }, // Start extra dark for drama
+        { 
+          filter: "brightness(1.0)", 
+          // duration: 0.0 means it finishes when the scroll is only 00% done
+          duration: .9, 
+          // power2.out starts fast and smooths out at the end
+          ease: "sine.inOut" 
+        }, 
+        0.1 // Starts at the very beginning
+      );
     });
 
-    ScrollTrigger.refresh();
-    return () => ctx.revert();
+    const handleResize = () => ScrollTrigger.refresh();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      ctx.revert();
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return <primitive ref={modelRef} object={scene} dispose={null} />;
 };
 
-// 2. The Main Canvas Component (Keep this clean)
 const PlantCanvas = () => {
   const modelRef = useRef();
 
   return (
-    <div style={{ width: '100%', height: '100vh' }}>
+    <div className="hero-3d-overlay">
       <Canvas
         gl={{ antialias: true, alpha: true }}
         camera={{ position: [0, 0, 8], fov: 35 }}
@@ -60,8 +105,6 @@ const PlantCanvas = () => {
         <ambientLight intensity={0.7} />
         <directionalLight intensity={1.5} position={[5, 10, 5]} />
         <Environment preset="city" /> 
-        
-        {/* The model logic is now correctly placed inside the Canvas context */}
         <PlantModel modelRef={modelRef} />
       </Canvas>
     </div>
