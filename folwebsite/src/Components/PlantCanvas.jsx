@@ -20,7 +20,8 @@ const PlantModel = ({ modelRef }) => {
 
     const ctx = gsap.context(() => {
       gsap.set(modelRef.current.position, { x: 0, y: -1.3, z: 3 });
-      gsap.set(modelRef.current.scale, { x: 2.5, y: 2.5, z: 2.5 });
+      gsap.set(modelRef.current.scale, { x: 3, y: 3, z: 3 });
+
 
       const tl = gsap.timeline({
         scrollTrigger: {

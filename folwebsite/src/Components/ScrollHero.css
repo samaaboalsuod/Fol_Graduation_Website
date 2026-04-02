@@ -1,6 +1,6 @@
 .hero-viewport {
     position: relative;
-    width: 100%;
+    /* width: 100%; */
     height: 200vh; /* This is the ONLY thing that should define page height */
     overflow-x: hidden;
 }
@@ -12,16 +12,30 @@
     width: 100%;
     position: relative;
     display: flex;
+    align-items: center;
     flex-direction: column; /* Stack vertically */
     z-index: 1; /* Lowest Layer */
 }
 
 /* Green Section */
 .section-green {
-    width: 100%;
+    width: 90%;
     height: 100vh; /* One full screen */
-    /* background-color: #082F19;  */
+    /* background-color: #4975a7;  */
     position: relative;
+    padding: 4vw 0;
+  
+}
+.heroP{
+    position: absolute;
+
+    /* background-color: #a76a49; */
+
+    left: 4vw;
+    width: 20%;
+    display: flex;
+    margin: 4rem 0;
+
 }
 
 /* photo Section */
@@ -58,7 +72,7 @@
 /* --- The Scroll Trigger Div --- */
 /* Creates the length of page needed to animate over */
 .scroll-trigger {
-    height: 200vh; /* About 2.5 screens worth of scrolling for the move */
+    height: 200vh;
 }
 
 .hero-3d-overlay, 
@@ -78,7 +92,6 @@ html, body, .hero-viewport, .hero-3d-overlay {
     -ms-overflow-style: none !important;
 }
 
-body::-webkit-scrollbar, 
 .hero-viewport::-webkit-scrollbar,
 .hero-3d-overlay::-webkit-scrollbar {
     display: none !important;

@@ -1,0 +1,41 @@
+.quiz-card-container {
+  width: 30%; /* As requested */
+  min-width: 300px; /* Safety for smaller screens */
+  background-color: #082F19; /* Your brand green */
+  padding: 30px;
+  
+  /* Creating that organic feel */
+  border: 2px solid #0a4022; 
+  border-radius: 100px 100px 100px 0px; 
+  
+  position: absolute;
+  overflow: hidden;
+  bottom: 10vw;
+}
+
+/* Texture overlay effect */
+.quiz-card-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0.1;
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Subtle grain */
+  pointer-events: none;
+}
+
+.quiz-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  direction: rtl; /* Ensures Arabic layout is correct */
+}
+
+.quiz-text {
+    color: var(--lightText);
+  font-family: var(--arabicFont);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}

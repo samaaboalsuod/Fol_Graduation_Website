@@ -9,7 +9,7 @@
     z-index: 20;
     display: flex;
     flex-direction: column;
-    padding: 6vw 4vw;
+    padding: 4vw 4vw;
     color: var(--lightText);
     font-family: var(--arabicFont);
     animation: slideInDown 0.5s ease-out;
