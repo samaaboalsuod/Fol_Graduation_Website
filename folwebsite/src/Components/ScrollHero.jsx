@@ -4,6 +4,7 @@ import PlantCanvas from './PlantCanvas';
 import QuizCard from './QuizCard';
 
 import livingRoom from '../Assets/Icons/livingRoom.png'; 
+import logoSvg from '../Assets/Icons/greenLogo.svg';
 
 const ScrollHero = () => {
   return (
@@ -20,15 +21,22 @@ const ScrollHero = () => {
     </div>
 
     <div className="section-photo">
+  {/* The background image that GSAP is already brightening */}
+  <img src={livingRoom} alt="Living Room" className="bg-photo" />
 
-       <img src={livingRoom} alt="Living Room" />
-
-       <div className="photo-ui-overlay">
-          <h2>Bring it Home</h2>
-          <button className="cta-button">Shop Now</button>
-       </div>
-
+  {/* NEW: Living Room UI Elements */}
+  <div className="photo-content-layer">
+    <div className="logo-container">
+       <img src={logoSvg} alt="Logo" className="hero-logo" />
     </div>
+
+    <div className="text-reveal-wrapper">
+       <h2 className="reveal-text line-1">حياة</h2>
+       <h2 className="reveal-text line-2">حقيقية</h2>
+       <h3 className="reveal-text line-3">جربها الآن في مكانك</h3>
+    </div>
+  </div>
+</div>
 
 
   </div>

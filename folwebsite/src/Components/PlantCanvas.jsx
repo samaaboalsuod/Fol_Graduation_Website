@@ -80,6 +80,43 @@ const PlantModel = ({ modelRef }) => {
         }, 
         0.1 // Starts at the very beginning
       );
+
+gsap.set([".hero-logo", ".line-1", ".line-2", ".line-3"], { opacity: 0, y: 300 });
+
+// 2. Control the Logo (Top Corner)
+tl.to(".hero-logo", {
+  opacity: 1,
+  y: 5,
+  x: 1220,
+  scale: 1,
+  duration: 4.4,
+  ease: "power2.out"
+}, 0.5); // Starts at 50% of scroll
+
+tl.to(".line-1", {
+  opacity: 1,
+  y: 300,
+  x: 470,
+  duration: 1,
+  ease: "power2.out"
+}, 0.6); // Starts at 60% of scroll
+
+tl.to(".line-2", {
+  opacity: 1,
+  y: 270,
+  x: 0,
+  duration: 1.2,
+  ease: "power2.out"
+}, 0.65); // Slightly delayed after the big title
+
+// 5. Control "جربها الآن" (The Button/Link)
+tl.to(".line-3", {
+  opacity: 1,
+  y: 0,
+  duration: 2,
+  ease: "power2.out"
+}, 0.8); // Appears last, when the room is fully bright
+
     });
 
     const handleResize = () => ScrollTrigger.refresh();
