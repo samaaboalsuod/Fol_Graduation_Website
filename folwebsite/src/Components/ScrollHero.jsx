@@ -5,6 +5,7 @@ import QuizCard from './QuizCard';
 
 import livingRoom from '../Assets/Icons/livingRoom.png'; 
 import logoSvg from '../Assets/Icons/greenLogo.svg';
+import SecondButton from './SecondButton';
 
 const ScrollHero = () => {
   return (
@@ -22,18 +23,22 @@ const ScrollHero = () => {
 
     <div className="section-photo">
   {/* The background image that GSAP is already brightening */}
-  <img src={livingRoom} alt="Living Room" className="bg-photo" />
+  <img src={livingRoom} alt="Living Room" className='bg-photo' />
 
   {/* NEW: Living Room UI Elements */}
-  <div className="photo-content-layer">
-    <div className="logo-container">
-       <img src={logoSvg} alt="Logo" className="hero-logo" />
+  <div className='photo-content-layer'>
+    <div className='logo-container'>
+       <img src={logoSvg} alt="Logo" className='hero-logo' />
     </div>
 
     <div className="text-reveal-wrapper">
-       <h2 className="reveal-text line-1">حياة</h2>
-       <h2 className="reveal-text line-2">حقيقية</h2>
-       <h3 className="reveal-text line-3">جربها الآن في مكانك</h3>
+       <h2 className='reveal-text line-1'>حياة</h2>
+       <h2 className='reveal-text line-2'>حقيقية</h2>
+       <SecondButton 
+       text="ماذا نقدم؟" 
+       className="line-3" 
+       onClick={() => console.log('Clicked!')} 
+       />
     </div>
   </div>
 </div>

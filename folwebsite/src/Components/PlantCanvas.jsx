@@ -85,17 +85,16 @@ gsap.set([".hero-logo", ".line-1", ".line-2", ".line-3"], { opacity: 0, y: 300 }
 
 // 2. Control the Logo (Top Corner)
 tl.to(".hero-logo", {
-  opacity: 1,
-  y: 5,
-  x: 1220,
-  scale: 1,
-  duration: 4.4,
-  ease: "power2.out"
-}, 0.5); // Starts at 50% of scroll
+    opacity: 0.8,
+    y: 0,
+    filter: "blur(0px)",
+    duration: 1,
+    ease: "power2.out"
+}, 0.5);
 
 tl.to(".line-1", {
   opacity: 1,
-  y: 300,
+  y: 150,
   x: 470,
   duration: 1,
   ease: "power2.out"
@@ -103,7 +102,7 @@ tl.to(".line-1", {
 
 tl.to(".line-2", {
   opacity: 1,
-  y: 270,
+  y: 70,
   x: 0,
   duration: 1.2,
   ease: "power2.out"
@@ -112,7 +111,7 @@ tl.to(".line-2", {
 // 5. Control "جربها الآن" (The Button/Link)
 tl.to(".line-3", {
   opacity: 1,
-  y: 0,
+  y: -200,
   duration: 2,
   ease: "power2.out"
 }, 0.8); // Appears last, when the room is fully bright
