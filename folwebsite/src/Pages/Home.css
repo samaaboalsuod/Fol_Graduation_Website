@@ -42,9 +42,17 @@ h1{
     font-size: 4rem;
 }
 h2{
-    line-height: 120%;
+    line-height: 130%;
     color: var(--lightText);
     font-family: var(--arabicFont);
     font-size: 1.2rem;
     font-weight: 400;
+}
+h3{
+    line-height: 120%;
+    color: rgb(250, 250, 234);
+    text-shadow: 0 3.633px 3.633px rgba(2, 39, 8, 0.337);
+    font-family: var(--arabicFont);
+    font-size: 2.5rem;
+    font-weight: 700;
 }

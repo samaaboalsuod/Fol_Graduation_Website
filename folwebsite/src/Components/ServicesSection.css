@@ -1,21 +1,34 @@
-.services-viewport {
+/* ============================================================
+   1. STRUCTURE & SCROLL WRAPPER
+   ============================================================ */
+.scroll-wrapper {
     position: relative;
+    width: 100%;
+    /* Total height is handled inline in JSX based on services count */
+}
+
+.sticky-container {
+    position: sticky;
+    top: 0;
     width: 100%;
     height: 100vh;
     background: #0b231a;
-    overflow: hidden;
+    overflow: hidden; 
+    z-index: 10;
 }
 
-/* Layering the Silver Roots as a background decor */
+/* ============================================================
+   2. FIXED OVERLAYS (Decor, Title, Counter)
+   ============================================================ */
 .silver-roots-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -55%);
     width: 90%;
-    z-index: 2; /* Between BG image and Glass Cards */
+    z-index: 20; /* Above photos, below glass cards */
     pointer-events: none;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .silver-roots-overlay img {
@@ -23,33 +36,34 @@
     height: auto;
 }
 
-/* Static UI Title */
 .section-main-title {
     position: absolute;
-    top: 100px;
-    right: 80px;
+    top: 10vh;
+    right: 4vw;
+    z-index: 30;
     color: white;
-    font-size: 2.5rem;
-    z-index: 10;
 }
 
-/* Static UI Counter */
 .service-counter {
     position: absolute;
-    top: 100px;
-    left: 80px;
-    color: white;
-    font-size: 1.5rem;
-    z-index: 10;
+    top: 10vh;
+    left: 4vw;
+    z-index: 30;
+    color: var(--lightText);
+    font-family: var(--arabicFont);
+    opacity: 0.8;
 }
 
-.service-slide {
-    position: relative;
+/* ============================================================
+   3. DISSOLVE LAYERS & BACKGROUND
+   ============================================================ */
+.dissolve-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
 }
 
 .service-bg {
@@ -57,7 +71,7 @@
     inset: 0;
     background-size: cover;
     background-position: center;
-    z-index: 1;
+    transition: transform 1.2s ease-out;
 }
 
 .service-content {
@@ -67,7 +81,9 @@
     z-index: 5;
 }
 
-/* Glass Bubbles Positioned to match design */
+/* ============================================================
+   4. GLASS BUBBLES (Your Custom Shapes & Positions)
+   ============================================================ */
 .glass-container {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
@@ -77,43 +93,127 @@
 }
 
 .title-card {
-    top: 25%;
+    top: 5%;
     left: 50%;
-    transform: translateX(-50%);
-    padding: 40px 80px;
-    border-radius: 200px; /* Circular pill shape */
+    /* Horizontal centering maintained via translateX */
+    transform: translateX(-50%) translateY(20px) scale(0.95);
+    padding: 20px;
+    border-radius: 200px 200px 200px 0;
     text-align: center;
-    min-width: 400px;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-card h2 {
+    line-height: 140%;
+    color: var(--lightText);
+    font-family: var(--arabicFont);
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
 .description-card {
-    top: 55%;
+    top: 52%;
     left: 60%;
     width: 400px;
-    padding: 30px;
-    border-radius: 80px 80px 0 80px; /* Asymmetric design */
+    padding: 2.5rem 2rem 2.5rem 1.5rem;
+    border-radius: 80px 80px 0 80px;
+    transform: translateX(-50%) translateY(20px) scale(0.95);
+}
+
+.description-card h2 {
+    line-height: 140%;
+    color: var(--lightText);
+    font-family: var(--arabicFont);
+    font-size: 1.2rem; /* Adjusted for description length */
+    font-weight: 400;
 }
 
 .stat-card {
-    top: 65%;
-    left: 35%;
+    top: 68%;
+    left: 33%;
     padding: 15px 40px;
-    border-radius: 50px;
+    border-radius: 80px 80px 80px 0;
     font-weight: bold;
+    transform: translateY(20px) scale(0.95);
 }
 
+.stat-card p {
+    line-height: 130%;
+    color: var(--lightText);
+    font-family: var(--arabicFont);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* ============================================================
+   5. ANIMATION LOGIC (The Reveal)
+   ============================================================ */
+.animate-pop {
+    opacity: 0;
+    transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Triggered when current slide opacity is set to 1 in JSX */
+.dissolve-layer[style*="opacity: 1"] .animate-pop {
+    opacity: 1;
+}
+
+.dissolve-layer[style*="opacity: 1"] .title-card,
+.dissolve-layer[style*="opacity: 1"] .description-card {
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.dissolve-layer[style*="opacity: 1"] .stat-card {
+    transform: translateY(0) scale(1);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+/* ============================================================
+   6. CTA & BUTTON
+   ============================================================ */
 .cta-container {
     position: absolute;
-    bottom: 80px;
+    bottom: 80px; 
     left: 50%;
-    transform: translateX(-50%);
+    /* Combine Horizontal Center (-50%) with the Animation Start (20px down) */
+    transform: translateX(-50%) translateY(20px) scale(0.95);
+    opacity: 0;
+    z-index: 100;
+    transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none; /* Prevents clicking while invisible */
+}
+
+.dissolve-layer[style*="opacity: 1"] .cta-container {
+    opacity: 1;
+    /* Keep the -50% to stay centered, but move Y to 0 */
+    transform: translateX(-50%) translateY(0) scale(1);
+    pointer-events: auto;
+    transition-delay: 0.3s; /* Matches your delay-3 for a staggered reveal */
 }
 
 .main-button-placeholder {
     padding: 15px 50px;
     border-radius: 50px;
     background: white;
+    color: #0b231a; /* Dark green text to match your theme */
     border: none;
     font-size: 1.1rem;
+    font-family: var(--arabicFont);
+    font-weight: 600;
     cursor: pointer;
+    white-space: nowrap; /* Prevents text from wrapping */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.main-button-placeholder:hover {
+    transform: scale(1.05);
+    background: #f0f0f0;
 }

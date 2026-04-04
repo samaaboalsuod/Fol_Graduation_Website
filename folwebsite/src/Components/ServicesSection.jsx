@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { supabase } from '../Supabase.jsx'; 
-// import MainButton from './MainButton'; 
 import './ServicesSection.css';
 import decorRoot from '../Assets/Icons/decorRoot.svg';
 
 const ServicesSection = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentIndex, setCurrentIndex] = useState(0); // Tracks current scroll/slide
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -23,56 +23,85 @@ const ServicesSection = () => {
     fetchServices();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionHeight = rect.height - window.innerHeight;
+      const progress = Math.min(Math.max(-rect.top / sectionHeight, 0), 1);
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [loading]);
+
   if (loading) return <div className="loader">Loading...</div>;
 
+  // Calculate which service is active and its individual fade
+ const activeIndex = Math.min(Math.floor(scrollProgress * services.length), services.length - 1);
+
   return (
-    <section className="services-viewport">
-      {/* LAYER 1: STATIC BACKGROUND DECOR */}
-      <div className="silver-roots-overlay">
-         <img src={decorRoot} alt="decor" />
-      </div>
+    <div className="scroll-wrapper" ref={sectionRef} style={{ height: `${services.length * 100}vh` }}>
+      <section className="services-viewport sticky-container">
+        
+        {/* FIXED LAYERS - Moved Z-Index up in CSS to stay above photos */}
+        <div className="silver-roots-overlay">
+           <img src={decorRoot} alt="decor" />
+        </div>
+        
+        <h3 className="section-main-title">ماذا نقدم لك؟</h3>
+        <span className="service-counter">{activeIndex + 1}/{services.length}</span>
 
-      {/* LAYER 2: STATIC UI OVERLAYS (Title & Counter) */}
-      <h3 className="section-main-title">ماذا نقدم لك؟</h3>
-      <span className="service-counter">
-        {currentIndex + 1}/{services.length}
-      </span>
+        {/* DISSOLVING SLIDES */}
+        {services.map((service, index) => {
+          const step = 1 / services.length;
+          const start = index * step;
+          const end = (index + 1) * step;
+          
+          let opacity = 0;
+          
+          // Logic: If it's the last item and we are at the end of the scroll, keep it visible
+          if (index === services.length - 1 && scrollProgress >= start) {
+            opacity = 1;
+          } else if (scrollProgress >= start && scrollProgress < end) {
+            opacity = 1;
+          }
 
-      {/* LAYER 3: DYNAMIC CONTENT SLIDES */}
-      <div className="slides-container">
-        {services.map((service, index) => (
-          <div key={service.id} className="service-slide">
-            
+          return (
             <div 
-              className="service-bg" 
-              style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${service.Photo})` }}
-            />
+              key={service.id} 
+              className="service-slide dissolve-layer"
+              style={{ 
+                opacity: opacity,
+                visibility: opacity > 0 ? 'visible' : 'hidden',
+                zIndex: opacity > 0 ? 5 : 1 // Bring the active slide to the front
+              }}
+            >
+              <div 
+                className="service-bg" 
+                style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${service.Photo})` }}
+              />
 
-            <div className="service-content">
-              {/* Title Bubble */}
-              <div className="glass-container title-card">
-                 <h2>{service.NameAR}</h2>
-              </div>
-              
-              {/* Description Bubble */}
-              <div className="glass-container description-card">
-                 <p>{service.DescriptionAR}</p>
-              </div>
-
-              {/* Stats Bubble */}
-              <div className="glass-container stat-card">
-                 <span>{service.Users}+ استشارة</span>
-              </div>
-
-              {/* CTA Button */}
-              <div className="cta-container">
-                 <button className="main-button-placeholder">احجز موعدك الآن</button>
+              <div className="service-content">
+                <div className="glass-container title-card animate-pop">
+                   <h2>{service.NameAR}</h2>
+                </div>
+                <div className="glass-container description-card animate-pop delay-1">
+                   <h2>{service.DescriptionAR}</h2>
+                </div>
+                <div className="glass-container stat-card animate-pop delay-2">
+                   <p>{service.Users}+ استشارة</p>
+                </div>
+                <div className="cta-container animate-pop delay-3">
+                   <button className="main-button-placeholder">احجز موعدك الآن</button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+          );
+        })}
+      </section>
+    </div>
   );
 };
 
