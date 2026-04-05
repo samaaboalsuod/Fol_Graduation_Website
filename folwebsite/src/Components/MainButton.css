@@ -1,0 +1,46 @@
+.mainButton{
+    font-family: var(--arabicFont);
+    color: var(--darkText);
+    background-color: var(--lightText);
+
+    font-size: 1.2rem;
+    font-weight: 500;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: fit-content;
+    padding: .6rem 2.5rem;
+    border-radius: 4rem;
+    border: none;
+    cursor: pointer;
+
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 1. HOVER STATE: Slightly lift and brighten */
+.mainButton:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    filter: brightness(1.1); /* Makes the lightText pop more */
+}
+
+/* 2. ACTIVE (PRESSING) STATE: Sink and compress */
+.mainButton:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    filter: brightness(0.95);
+}
+
+/* 3. INACTIVE / DISABLED STATE: Grayed out and flat */
+.mainButton:disabled, 
+.mainButton.inactive {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #a0a0a0; /* Neutral gray */
+    color: #666666;
+    transform: none;
+    box-shadow: none;
+}

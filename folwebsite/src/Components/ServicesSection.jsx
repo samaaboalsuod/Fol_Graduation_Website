@@ -1,6 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import { supabase } from '../Supabase.jsx'; 
 import './ServicesSection.css';
+
+import MainButton from './MainButton';
+
 import decorRoot from '../Assets/Icons/decorRoot.svg';
 
 const ServicesSection = () => {
@@ -84,18 +87,23 @@ const ServicesSection = () => {
               />
 
               <div className="service-content">
+
                 <div className="glass-container title-card animate-pop">
                    <h2>{service.NameAR}</h2>
                 </div>
+
                 <div className="glass-container description-card animate-pop delay-1">
                    <h2>{service.DescriptionAR}</h2>
                 </div>
+
                 <div className="glass-container stat-card animate-pop delay-2">
                    <p>{service.Users}+ استشارة</p>
                 </div>
+
                 <div className="cta-container animate-pop delay-3">
-                   <button className="main-button-placeholder">احجز موعدك الآن</button>
+                   <MainButton text="احجز موعدك الآن" />
                 </div>
+
               </div>
             </div>
           );

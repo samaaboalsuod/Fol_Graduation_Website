@@ -34,6 +34,7 @@
 .silver-roots-overlay img {
     width: 100%;
     height: auto;
+    mix-blend-mode:lighten;
 }
 
 .section-main-title {
