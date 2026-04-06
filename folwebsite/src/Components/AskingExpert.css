@@ -1,0 +1,72 @@
+.expert-section {
+    height: 102vh;
+    width: 100%;
+    overflow: visible; /* Strict no-scroll rule */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0 ;
+    margin-bottom: 6vh;
+}
+
+.expert-container {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* Controlled height for the cards/branch */
+    max-width: 1200px; /* Keeps cards from floating too far on wide screens */
+    margin: 0 auto;
+}
+
+.expert-main-title {
+    align-self: flex-start;
+    margin-right: 4vw;
+    color: var(--lightText);
+    font-family: var(--arabicFont);
+    font-size: 3rem;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 1s ease-out;
+}
+
+.is-visible .expert-main-title {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.expert-container {
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+    height: fit-content;
+    margin-top: -8vh;
+}
+
+/* Positioning the cards around the branch */
+.bubbles-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Fill the 80vh container */
+    pointer-events: none;
+}
+
+
+/* Staggering the entrance based on the branch growth */
+.bubble-card-container {
+    position: absolute;
+    width: 300px;
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10;
+}
+.is-visible .bubble-card-container {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.bubble-card-container.show {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+}

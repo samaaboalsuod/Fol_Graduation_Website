@@ -1,0 +1,50 @@
+.main-branch-container {
+    position: absolute;
+    top: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%; /* Fill the expert-container */
+    z-index: 1;
+}
+
+.trunk-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.branch-path {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    transition: stroke-dashoffset 3.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate .branch-path {
+    stroke-dashoffset: 0;
+}
+
+/* Stagger the spirals so they appear after the trunk grows past them */
+.animate .spiral-1 {
+    transition: stroke-dashoffset 1.5s ease-out;
+    transition-delay: 0.8s; /* Grows when trunk reaches 730px */
+}
+
+.animate .spiral-2 {
+    transition: stroke-dashoffset 1.5s ease-out;
+    transition-delay: 1.6s; /* Grows when trunk reaches 430px */
+}
+
+.animate .spiral-3 {
+    transition: stroke-dashoffset 1.5s ease-out;
+    transition-delay: 2.4s; /* Grows when trunk reaches 230px */
+}
+
+
+#pencilTexture feTurbulence {
+    baseFrequency: 0.9;
+}
+
+.animate .trunk-line {
+    transition: stroke-dashoffset 3s ease-in-out;
+}
