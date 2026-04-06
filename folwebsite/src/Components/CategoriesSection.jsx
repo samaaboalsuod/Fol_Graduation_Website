@@ -12,6 +12,25 @@ const CategoriesSection = () => {
     const [activeId, setActiveId] = useState(null);
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef(null);
+    
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    // Once it's visible, we can stop observing
+                    observer.unobserve(entry.target);
+                }
+            },
+            { threshold: 0.4 } // Trigger when 20% of the section is visible
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
 
     // 1. Fetching from Supabase
 useEffect(() => {
