@@ -1,0 +1,60 @@
+.categories-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #0b231a; /* Your brand green */
+    overflow: hidden;
+    padding: 15vh 5vw;
+
+    z-index: 10;
+}
+
+.category-bg-photo {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    object-fit: cover;
+    height: fit-content;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.category-bg-photo img {
+    width: 100%;
+}
+
+.categories-wrapper.visible .category-bg-photo {
+    opacity: 0.4; /* Soft reveal of the background photo */
+}
+
+.section-main-title {
+    position: absolute;
+    top: 10vh;
+    right: 4vw;
+    z-index: 6;
+    color: var(--lightText);
+    font-family: var(--arabicFont);
+    font-size: 2.5rem;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 1s ease-out;
+}
+
+.categories-wrapper.visible .section-main-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 groups per row as in your screenshot */
+    gap: 4rem;
+    z-index: 5;
+    position: relative;
+    margin-top: 10vh;
+}
