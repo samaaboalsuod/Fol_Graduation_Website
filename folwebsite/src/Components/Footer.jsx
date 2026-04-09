@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+
+
 import './Footer.css';
 
-import logo from '../Assets/Icons/logo.svg'; 
-import MainButton from './MainButton';
+import { FacebookLogo, InstagramLogo, TwitterLogo } from "@phosphor-icons/react";
 
+import logo from '../Assets/Icons/logo.svg'; 
+  
 const Footer = () => {
     return ( 
         <footer>
@@ -45,12 +48,23 @@ const Footer = () => {
             <hr />
 
             <div className='footerBottom'>
+
                 <div className='newsCont'>
                     <h5>اشترك في نشرتنا الأسبوعية لتصلك كل التحديثات</h5>
                     <div className='newsInputCont'>
                         <input type="text" placeholder='البريد الإلكتروني' />
                         <button class="subscribe-btn">اشترك الآن</button>
                         
+                    </div>
+                </div>
+
+                <div className='footerColumn'>
+                    <h5>تواصل مع فل</h5>
+                    <p>+20 10236589809</p>
+
+                    <div className='socilaCont'>
+                        {/* <img src="" alt="" /> */}
+                        <FacebookLogoIcon size={32} color="#fafaea" />
                     </div>
                 </div>
             </div>

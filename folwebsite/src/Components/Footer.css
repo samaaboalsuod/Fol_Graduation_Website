@@ -149,3 +149,8 @@ hr{
     transform: translateY(0);
 }
 
+.socilaCont{
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+}
