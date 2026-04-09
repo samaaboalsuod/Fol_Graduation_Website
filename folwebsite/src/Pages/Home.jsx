@@ -6,6 +6,7 @@ import ServicesSection from '../Components/ServicesSection';
 import CategoriesSection from '../Components/CategoriesSection';
 import AskingExpert from '../Components/AskingExpert';
 import CommunitySection from '../Components/CommunitySection';
+import Footer from '../Components/Footer';
 
 
 
@@ -23,10 +24,8 @@ const Home = () => {
     <AskingExpert />
 
     <CommunitySection />
-    
-    
-    
-    
+
+    <Footer />
     
     
     </> );
