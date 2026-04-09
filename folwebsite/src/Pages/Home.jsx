@@ -5,6 +5,7 @@ import ScrollHero from '../Components/ScrollHero';
 import ServicesSection from '../Components/ServicesSection';
 import CategoriesSection from '../Components/CategoriesSection';
 import AskingExpert from '../Components/AskingExpert';
+import CommunitySection from '../Components/CommunitySection';
 
 
 
@@ -20,6 +21,8 @@ const Home = () => {
     <CategoriesSection />
 
     <AskingExpert />
+
+    <CommunitySection />
     
     
     

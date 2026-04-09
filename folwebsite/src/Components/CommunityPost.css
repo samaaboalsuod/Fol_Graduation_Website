@@ -1,0 +1,82 @@
+.post-card-wrapper {
+    position: absolute;
+    z-index: 5;
+    cursor: pointer;
+    /* Independent Float: Randomized by a CSS variable or prop */
+    animation: floatVertical 6s ease-in-out infinite;
+}
+
+.post-card-inner {
+    background: var( --lightText); /* Light herbal background from your screen */
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease;
+
+    font-family: var(--arabicFont);
+}
+
+/* Hover "Push" Effect */
+.post-card-inner:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background: #ccc;
+    border-radius: 50% 50% 50% 0;
+    overflow: hidden
+}
+
+.user-name {
+    display: block;
+    color: var(--darkText);
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.post-text {
+    color: var(--darkText);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    direction: rtl;
+}
+
+.post-main-img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: .6vw;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: 12px;
+    color: #4a6d64;
+}
+
+/* Independent Floating Animation */
+@keyframes floatVertical {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-20px); }
+}
+
+/* Mobile Responsiveness: Shrink and center */
+@media (max-width: 768px) {
+    .post-card-wrapper {
+        width: 180px !important;
+    }
+}

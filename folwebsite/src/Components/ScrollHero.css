@@ -2,8 +2,9 @@
     position: relative;
     /* width: 100%; */
     height: 200vh; /* This is the ONLY thing that should define page height */
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
+
 
 /* --- Content Layers --- */
 
@@ -63,7 +64,6 @@
     height: 100vh;
     z-index: 2; 
     background: transparent;
-    /* ALLOWS MOUSE TO PASS THROUGH TO BUTTONS */
     pointer-events: none; 
 }
 
