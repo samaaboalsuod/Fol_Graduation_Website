@@ -3,11 +3,20 @@ import React, { Component } from 'react';
 
 import './Footer.css';
 
-import { FacebookLogo, InstagramLogo, TwitterLogo } from "@phosphor-icons/react";
+import { FacebookLogo, InstagramLogo, YoutubeLogo, CaretUpIcon  } from "@phosphor-icons/react";
 
 import logo from '../Assets/Icons/logo.svg'; 
   
 const Footer = () => {
+
+    const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // This creates a professional, slow glide up
+    });
+};
+
+
     return ( 
         <footer>
 
@@ -49,6 +58,8 @@ const Footer = () => {
 
             <div className='footerBottom'>
 
+                <div className='footerBottRight'>
+
                 <div className='newsCont'>
                     <h5>اشترك في نشرتنا الأسبوعية لتصلك كل التحديثات</h5>
                     <div className='newsInputCont'>
@@ -64,9 +75,19 @@ const Footer = () => {
 
                     <div className='socilaCont'>
                         {/* <img src="" alt="" /> */}
-                        <FacebookLogoIcon size={32} color="#fafaea" />
+                        <FacebookLogo size={32} color="#fafaea" />
+                        <InstagramLogo size={32} color="#fafaea" />
+                        <YoutubeLogo size={32} color="#fafaea" />
                     </div>
                 </div>
+
+                </div>
+
+                <div className='topArrow' onClick={scrollToTop} style={{ cursor: 'pointer' }}>
+                    <div className='arrow'> <CaretUpIcon size={32} color="#fafaea" /> </div>
+                    <p>عد إلى البداية</p>
+                </div>
+
             </div>
 
         </footer>

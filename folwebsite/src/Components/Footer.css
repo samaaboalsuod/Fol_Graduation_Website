@@ -55,11 +55,11 @@ footer{
     font-weight: 400;
 }
 
-hr{
-    width: 80%;
+footer hr{
+    width: 100%;
     height: 1px;
     background-color: var(--lightText);
-    opacity: .4;
+    opacity: .3;
     border-radius: 4px;
 
 }
@@ -153,4 +153,46 @@ hr{
     display: flex;
     gap: 1vw;
     align-items: center;
+}
+
+.footerBottRight{
+    display: flex;
+    gap: 4vw;
+    align-items: center;
+}
+
+.arrow{
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 26px;
+    border: 1px solid rgba(250, 250, 234, 0.70);
+    background: rgba(0, 0, 0, 0.00);
+}
+
+.topArrow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5vw;
+}
+.topArrow p{
+    font-family: var(--arabicFont);
+    color: var(--lightText);
+
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.topArrow:hover {
+    transform: translateY(-5px); /* Subtle lift when hovered */
+}
+
+.topArrow:hover .arrow {
+    background: rgba(250, 250, 234, 0.1); /* Slight glow on the circle */
+    border-color: rgba(250, 250, 234, 1);
 }
