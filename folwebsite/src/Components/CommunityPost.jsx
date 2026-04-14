@@ -2,54 +2,50 @@ import React from 'react';
 import './CommunityPost.css';
 
 const CommunityPost = ({ data, show, onClick }) => {
-    // The "Bloom" Logic: If not shown, stay at center (50%). 
-    // If shown, move to the fixed 'left' coordinate.
+    // Mapping DB columns to the bloom logic
     const bloomStyle = {
-        top: data.top,
-        left: show ? data.left : '50%', 
+        top: data.pos_top, //
+        left: show ? data.pos_left : '50%', 
         transform: show 
             ? 'translate(-50%, -50%) scale(1)' 
             : 'translate(-50%, -50%) scale(0)',
         opacity: show ? 1 : 0,
-        filter: `blur(${data.blur})`,
-        transition: `all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) ${data.delay}s`,
-        width: data.size,
+        filter: `blur(${data.blur_amt})`,
+        transition: `all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) ${data.delay_sec}s`,
+        width: "300px", // Fixed standard width for consistent layout
         pointerEvents: show ? 'auto' : 'none',
     };
 
     return (
-        <div 
-            className="post-card-wrapper" 
-            style={bloomStyle} 
-            onClick={onClick}
-        >
+        <div className="post-card-wrapper" style={bloomStyle} onClick={onClick}>
             <div className="post-card-inner">
-                {/* Header: User Info */}
+                {/* Header: Dynamic User Info */}
                 <div className="post-header">
-                    <div className="user-avatar"></div>
+                    <img src={data.user_img} alt={data.user_name} className="user-avatar" />
                     <div className="user-meta">
-                        <span className="user-name">محمد العلي</span>
+                        <span className="user-name">{data.user_name}</span>
                         <span className="post-time">منذ يومين</span>
                     </div>
                 </div>
 
-                {/* Content: Text & Image */}
-                <p className="post-text">هل يمكن إنقاذ هذه المونستيرا؟ الأوراق بدأت تصفر 😟</p>
+                {/* Content: Dynamic Text & Image */}
+                <p className="post-text">{data.content_ar}</p>
                 <div className="post-image-container">
-                    <img src={data.img} alt="Community Post" className="post-main-img" />
+                    <img src={data.img_url} alt="Community Post" className="post-main-img" />
                 </div>
 
-                {/* Tags */}
+                {/* Tags: Mapping through the DB array */}
                 <div className="post-tags">
-                    <span className="tag">#مونستيرا</span>
-                    <span className="tag">#مساعدة</span>
+                    {data.tags && data.tags.map((tag, i) => (
+                        <span key={i} className="tag">#{tag}</span>
+                    ))}
                 </div>
 
-                {/* Interaction Bar */}
+                {/* Interaction Bar: Dynamic Counts */}
                 <div className="post-footer">
                     <div className="footer-right">
-                        <i className="icon-heart"></i> <span>18</span>
-                        <i className="icon-comment"></i> <span>12</span>
+                        <i className="icon-heart"></i> <span>{data.likes_count}</span>
+                        <i className="icon-comment"></i> <span>{data.comments_count}</span>
                     </div>
                     <i className="icon-bookmark"></i>
                 </div>

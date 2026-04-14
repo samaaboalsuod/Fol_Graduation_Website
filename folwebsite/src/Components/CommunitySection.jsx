@@ -1,31 +1,35 @@
 import React, { useState, useEffect, useRef } from 'react';
 import CommunityPost from './CommunityPost';
 import InviteOverlay from './InviteOverlay';
+import { supabase } from '../Supabase.jsx'; //
 import './CommunitySection.css';
 
 const CommunitySection = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [memberCount, setMemberCount] = useState(0);
     const [selectedPost, setSelectedPost] = useState(null);
+    const [communityPosts, setCommunityPosts] = useState([]); // Dynamic state
     const sectionRef = useRef(null);
 
-    // Fixed Random Layout Data
-    const communityPosts = [
-        { id: 1, img: "/posts/p1.jpg", size: "280px", top: "35%", left: "20%", blur: "4px", delay: 0.2 },
-        { id: 2, img: "/posts/p2.jpg", size: "340px", top: "75%", left: "15%", blur: "0px", delay: 0.5 },
-        { id: 3, img: "/posts/p3.jpg", size: "250px", top: "80%", left: "50%", blur: "3px", delay: 0.8 },
-        { id: 4, img: "/posts/p4.jpg", size: "320px", top: "30%", left: "45%", blur: "0px", delay: 1.1 },
-        { id: 5, img: "/posts/p5.jpg", size: "270px", top: "42%", left: "70%", blur: "2px", delay: 1.4 },
-        { id: 6, img: "/posts/p6.jpg", size: "350px", top: "68%", left: "85%", blur: "0px", delay: 1.7 },
-    ];
-
     useEffect(() => {
+        const fetchPosts = async () => {
+            const { data, error } = await supabase
+                .from('Community_Posts')
+                .select('*')
+                .order('id', { ascending: true }); //
+
+            if (error) console.error("Error fetching posts:", error.message);
+            else setCommunityPosts(data || []);
+        };
+
+        fetchPosts();
+
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 setIsVisible(true);
                 startCounter();
             } else {
-                setIsVisible(false); // Resets so it blooms every time
+                setIsVisible(false);
                 setMemberCount(0);
             }
         }, { threshold: 0.3 });
@@ -39,7 +43,6 @@ const CommunitySection = () => {
         const end = 5432;
         const duration = 2000; 
         const increment = end / (duration / 16);
-
         const timer = setInterval(() => {
             start += increment;
             if (start >= end) {
@@ -62,7 +65,6 @@ const CommunitySection = () => {
             </div>
 
             <div className="gallery-container">
-                {/* The Central Vine would be here as a background SVG */}
                 {communityPosts.map((post) => (
                     <CommunityPost 
                         key={post.id}

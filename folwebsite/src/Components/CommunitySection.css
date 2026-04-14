@@ -1,8 +1,9 @@
 .community-section {
+    margin-bottom: 3rem;
     height: 100vh;
     width: 100%;
     /* background-color: var(--darkGreen); */
-    overflow: hidden; /* No scroll rule */
+    overflow: visible; 
     position: relative;
 
     display: flex; /* Helps center the content */

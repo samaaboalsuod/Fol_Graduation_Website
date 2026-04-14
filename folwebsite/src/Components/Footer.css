@@ -36,23 +36,53 @@ footer{
 
 }
 
-.footerColumn h5{
+.footerColumn h5, 
+.footerColumn p {
     font-family: var(--arabicFont);
     color: var(--lightText);
+    position: relative; /* */
+    display: inline-block; /* Essential for the underline width to match the text */
+    cursor: pointer;
+    transition: color 0.3s ease; /* */
+}
 
+.footerColumn h5 {
     font-size: 1.2rem;
     font-weight: 500;
+    margin-bottom: 1rem;
 }
-.footerColumn p{
-    font-family: var(--arabicFont);
-    color: var(--lightText);
 
+.footerColumn p {
     font-size: 1rem;
     font-weight: 300;
+    margin-bottom: 0.5rem;
 }
-.footerColumn p:hover{
+
+/* --- THE UNDERLINE LOGIC --- */
+
+/* Create the invisible line */
+.footerColumn h5::after,
+.footerColumn p::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: 0; /* Starts from the right for Arabic */
+    width: 0%; /* Hidden by default */
+    height: 1.5px;
+    background-color: #e0e0cd; /* Your hover color */
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth draw */
+}
+
+/* Draw the line on hover */
+.footerColumn h5:hover::after,
+.footerColumn p:hover::after {
+    width: 100%;
+}
+
+/* Smooth color transition without jumping font-weight */
+.footerColumn h5:hover,
+.footerColumn p:hover {
     color: #e0e0cd;
-    font-weight: 400;
 }
 
 footer hr{
@@ -83,6 +113,8 @@ footer hr{
 
     font-size: 1rem;
     font-weight: 300;
+
+    transition: all 0.3s ease;
 }
 
 .newsInputCont{
@@ -101,6 +133,8 @@ footer hr{
 
     flex: 1; /* Forces the input to take up all available space */
     width: auto;
+
+    transition: all 0.3s ease;
 }
 
 .newsInputCont input::placeholder {
@@ -169,9 +203,11 @@ footer hr{
     justify-content: center;
     align-items: center;
 
-    border-radius: 26px;
+    border-radius: 50%;
     border: 1px solid rgba(250, 250, 234, 0.70);
     background: rgba(0, 0, 0, 0.00);
+
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .topArrow{
@@ -179,6 +215,8 @@ footer hr{
     flex-direction: column;
     align-items: center;
     gap: .5vw;
+
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .topArrow p{
     font-family: var(--arabicFont);
@@ -186,13 +224,29 @@ footer hr{
 
     font-size: 1rem;
     font-weight: 300;
+
+    transition: color 0.4s ease;
 }
 
 .topArrow:hover {
-    transform: translateY(-5px); /* Subtle lift when hovered */
+    /* Slightly more lift for a better sense of depth */
+    transform: translateY(-8px); 
 }
 
+
 .topArrow:hover .arrow {
-    background: rgba(250, 250, 234, 0.1); /* Slight glow on the circle */
+    background: rgba(250, 250, 234, 0.15); 
     border-color: rgba(250, 250, 234, 1);
+    /* Subtle glow to match the FOL aesthetic */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.topArrow:hover p {
+    color: #e0e0cd; /* Matches your footer hover color */
+}
+
+/* Add a tiny click effect so it feels responsive */
+.topArrow:active {
+    transform: translateY(-2px) scale(0.95);
+    transition: transform 0.1s ease;
 }
