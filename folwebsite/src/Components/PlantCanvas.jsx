@@ -19,19 +19,21 @@ const PlantModel = ({ modelRef }) => {
     if (!modelRef.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.set(modelRef.current.position, { x: 0, y: -1.3, z: 3 });
+      gsap.set(modelRef.current.position, { x: 0, y: -1, z: 3 });
       gsap.set(modelRef.current.scale, { x: 3, y: 3, z: 3 });
 
 
       const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.hero-viewport',
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: 2.5, // Slightly higher for that 'floaty' feel
-          invalidateOnRefresh: true,
-        }
-      });
+  scrollTrigger: {
+    trigger: '.hero-viewport', // The container for the 200vh
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 2.5,
+    pin: '.hero-3d-overlay', // PIN the canvas container
+    pinSpacing: false,       // Prevents GSAP from adding extra white space
+    invalidateOnRefresh: true,
+  }
+});
 
       // 1. GENTLE LIGHTING (Ends at 60% of the scroll)
       tl.fromTo(".section-photo img", 

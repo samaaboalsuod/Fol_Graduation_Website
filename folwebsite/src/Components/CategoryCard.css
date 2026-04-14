@@ -14,9 +14,8 @@
 
 .glass-card {
     background: rgba(255, 255, 247, 0.126);
-    backdrop-filter: blur(24++
-    px) saturate(180%);
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    backdrop-filter: blur(24++px) saturate(180%);
+    -webkit-backdrop-filter: blur(35px) saturate(180%);
 
     transform: translateZ(0); 
     will-change: transform, opacity;
@@ -83,7 +82,7 @@
     width: 120px;
     height: 120px;
     object-fit: cover;
-    border-radius: 2rem; /* Rounded "organic" look */
+    border-radius: 80px 80px 80px 0;
 }
 
 @keyframes slideDownFade {
