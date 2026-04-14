@@ -1,14 +1,22 @@
 .second-button {
-    padding: 12px 35px;
-    background: rgba(255, 255, 255, 0.1); /* Subtle glass look */
+    white-space: nowrap;
+
+    padding: .6rem 2.5rem;
+    border-radius: 4rem;
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(12px); /* Modern blur */
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50px;
+
     color: var(--lightText);
     font-family: var(--arabicFont);
     font-weight: 500;
     font-size: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Professional easing */
     outline: none;
@@ -18,7 +26,7 @@
 .second-button:hover {
     background: rgba(255, 255, 255, 0.25);
     border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-3px) scale(1.05); /* Slight lift and grow */
+    /* transform: translateY(-3px) scale(1.05);  */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 

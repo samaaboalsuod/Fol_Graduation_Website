@@ -1,0 +1,92 @@
+.actionCardCont {
+    position: relative;
+    /* 1. Restore the width and spacing */
+    width: 42vw; 
+    min-height: 420px; 
+    padding: 2.5vw;
+    
+    /* 2. Fix the stacking */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    gap: 2vw;
+    
+    /* 3. Visuals */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Keep text aligned for Arabic */
+    text-align: right;
+    position: relative;
+
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.actionCardCont:hover {
+    transform: translateY(-8px); 
+    
+    background: rgba(255, 255, 255, 0.08); 
+    border-color: rgba(255, 255, 255, 0.3); 
+    
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 
+                0 0 15px rgba(255, 255, 255, 0.05); 
+}
+
+
+.actionCardCont .second-button {
+    margin-top: auto; /* Pushes button to bottom of the card */
+
+    /* width: fit-content; */
+    z-index: 10;
+}
+
+.topRow{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: .8vw;
+}
+
+.iconCont{
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #fafaea;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.titleCol{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .1vw;
+}
+
+.titleCol p{
+    font-family: var(--arabicFont);
+    color: #fafaea94;
+
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.featureCol{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .4vw;
+}
+
+
+.actionCardCont.highlighted-border { border: 2px solid #fdfdf2; }
+
+.low{
+    opacity: .8;
+    font-weight: 300;
+}
