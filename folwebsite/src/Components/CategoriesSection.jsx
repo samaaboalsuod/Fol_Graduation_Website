@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { supabase } from '../Supabase.jsx'; // Adjust path to your client
+import { supabase } from '../Supabase.jsx'; 
 import './CategoriesSection.css';
-
-import LeafGroup from './LeafGroup'; // We will create this next
-import CategoryCard from './CategoryCard'; // We will create this after
-
+import LeafGroup from './LeafGroup'; 
+import CategoryCard from './CategoryCard'; 
 import CategoryBg from '../Assets/Icons/cateBg.jpg';
 
 const CategoriesSection = () => {
@@ -18,57 +16,41 @@ const CategoriesSection = () => {
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
-                    // Once it's visible, we can stop observing
                     observer.unobserve(entry.target);
                 }
             },
-            { threshold: 0.4 } // Trigger when 20% of the section is visible
-        );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
-
-    // 1. Fetching from Supabase
-useEffect(() => {
-    const fetchCategories = async () => {
-        const { data, error } = await supabase
-            .from('Categories')
-            .select('*')
-            // .range(start, end) -> start is inclusive, end is inclusive
-            // Index 3 is Row 4 | Index 8 is Row 9
-            .range(3, 8) 
-            .order('id', { ascending: true }); // Ensures they stay in the correct visual order
-        
-        if (error) {
-            console.error("Error fetching categories:", error);
-        } else {
-            setCategories(data);
-        }
-    };
-
-    fetchCategories();
-}, []);
-
-    // 2. Intersection Observer for the "One-by-One" reveal
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) setIsVisible(true);
-            },
-            { threshold: 0.2 } // Triggers when 20% of section is visible
+            { threshold: 0.4 }
         );
 
         if (sectionRef.current) observer.observe(sectionRef.current);
         return () => observer.disconnect();
     }, []);
 
+    // 1. Precise fetching logic using IDs instead of ranges
+    useEffect(() => {
+        const fetchCategories = async () => {
+            // Target IDs: 4 (Lighting), 5 (Care), 9 (Space), 10 (Safety), 11 (Goal)
+            const targetIds = [4, 5, 9, 10, 11];
+
+            const { data, error } = await supabase
+                .from('Categories')
+                .select('*')
+                // Fetch specific IDs OR any row marked as 'General' (for View All Plants)
+                .or(`id.in.(${targetIds.join(',')}),CategoryType.eq.General`)
+                .order('id', { ascending: true }); 
+            
+            if (error) {
+                console.error("Error fetching categories:", error);
+            } else {
+                setCategories(data);
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
     return (
         <section className={`categories-wrapper ${isVisible ? 'visible' : ''}`} ref={sectionRef}>
-            {/* Background Placeholder - Commented as requested */}
             <div className="category-bg-photo">
                 <img src={CategoryBg} alt="background" />
             </div>
@@ -80,14 +62,14 @@ useEffect(() => {
                     <LeafGroup 
                         key={cat.id}
                         data={cat}
-                        index={index} // Used for the staggered reveal delay
+                        index={index} 
                         isActive={activeId === cat.id}
                         onToggle={() => setActiveId(activeId === cat.id ? null : cat.id)}
                     />
                 ))}
             </div>
 
-            {/* The Offset Glass Card */}
+            {/* Render the card only when a leaf is clicked */}
             {activeId && (
                 <CategoryCard 
                     data={categories.find(c => c.id === activeId)} 

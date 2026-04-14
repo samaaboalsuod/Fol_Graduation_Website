@@ -1,41 +1,43 @@
 import React from 'react';
 import './CategoryCard.css';
-import MainButton from './MainButton'; // Reusing your existing button
+import MainButton from './MainButton'; 
 
 const CategoryCard = ({ data, onClose }) => {
+    // Safety check: do not render if data is missing
     if (!data) return null;
 
-    // Destructure your JSONB photos
-    // Assuming your JSON structure is: { "primary": "url", "secondary": "url" }
-    const photos = data.Photos || {}; 
+    // Destructure Photos from JSONB column with empty fallback to prevent crashes
+    const photos = data.Photos || { primary: '', secondary: '' }; 
 
     return (
         <div className="category-card-overlay active">
             <div className="glass-card">
-                {/* Close Button */}
                 <button className="close-card" onClick={onClose}>✕</button>
 
-                {/* Content Top: Icon & Title */}
                 <div className="card-header">
-                    <img src={data.Icon} alt="icon" className="category-icon" />
+                    {/* Fetches icon URL from the database 'Icon' column */}
+                    <img src={data.Icon} alt="category icon" className="category-icon" />
                     <h2 className="card-title">{data.NameAR}</h2>
                 </div>
 
-                {/* Description & Count */}
                 <p className="card-description">{data.DescriptionAR}</p>
-                <span className="plant-count">{data.Items_Numbers}+ نبات</span>
+                
+                {/* Dynamic label: shows plant count OR 'Explore' for general categories */}
+                <span className="plant-count">
+                    {data.CategoryType === 'General' ? 'اكتشف المزيد' : `${data.Items_Numbers || 80}+ نبات`}
+                </span>
 
-                {/* Photo Section: Using your JSONB paths */}
                 <div className="card-photos">
                     <div className="photo-wrapper primary">
-                        <img src={photos.primary} alt="primary" />
+                        {/* Accesses 'primary' key inside JSONB column */}
+                        <img src={photos.primary} alt="main view" />
                     </div>
                     <div className="photo-wrapper secondary">
-                        <img src={photos.secondary} alt="secondary" />
+                        {/* Accesses 'secondary' key inside JSONB column */}
+                        <img src={photos.secondary} alt="alternate view" />
                     </div>
                 </div>
 
-                {/* Main Action Button */}
                 <div className="card-action">
                     <MainButton text="استكشف الآن" />
                 </div>
