@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-import Home from './Pages/Home';
+import RoutingApps from './RoutingApps';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 
-    <Home />
+    <RoutingApps />
     
   </React.StrictMode>
 );

@@ -1,0 +1,41 @@
+.pageTitleCont{
+    width: 100%;
+
+    padding: 8vw 15vw 2vw 15vw;
+
+    display: flex;
+    flex-direction: column;
+    gap: .5vw;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.subRow{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5vw;
+}
+
+.pageTitleCont h5{
+    font-family: var(--arabicFont);
+    color: var(--lightText);
+
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.pageTitleCont h2{
+    width: 30vw;
+    font-family: var(--arabicFont);
+    color: var(--lightText);
+
+    font-size: 2.6rem;
+    font-weight: 700;
+
+    text-align: center;
+}
+
+.subRow img[src=""], .subRow img:not([src]) { display: none; }
