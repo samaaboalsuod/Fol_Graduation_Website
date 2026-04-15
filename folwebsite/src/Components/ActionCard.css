@@ -1,5 +1,6 @@
 .actionCardCont {
     position: relative;
+    z-index: 10;
     /* 1. Restore the width and spacing */
     width: 42vw; 
     min-height: 420px; 
@@ -13,7 +14,7 @@
     
     /* 3. Visuals */
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(25px);
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     

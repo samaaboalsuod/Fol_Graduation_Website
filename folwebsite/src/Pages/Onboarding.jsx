@@ -5,7 +5,8 @@ import './Onboarding.css';
 import { supabase } from '../Supabase.jsx'; 
 import PageTitle from './../Components/PageTitle';
 import ActionCard from './../Components/ActionCard';
-
+import logo from '../Assets/Icons/logo.svg';
+import DecorLeaf from '../Assets/Icons/decorLeaf.png';
 
 
 const Onboarding = () => {
@@ -50,6 +51,12 @@ useEffect(() => {
 
 
     return ( <>
+
+    <nav>
+        <header>
+            <img src={logo} alt="logo" />
+        </header>
+    </nav>
     
     {titleData ? (
                 <PageTitle 
@@ -83,16 +90,10 @@ useEffect(() => {
     </section>
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  <div className="leaf-decor-system">
+    <img src={DecorLeaf} className="leaf-primary" alt="" />
+    <img src={DecorLeaf} className="leaf-secondary" alt="" />
+</div>
     
     </> );
 }
