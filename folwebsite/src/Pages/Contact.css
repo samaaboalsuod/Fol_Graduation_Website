@@ -21,16 +21,20 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 120vh; /* Extended height to overlap next section */
     z-index: 0;
+    pointer-events: none;
 }
 
 .bgImg {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.25; /* Decreased opacity */
+    opacity: 0.2;
     mix-blend-mode: soft-light;
+    /* Mask the image so it's gone long before the 120vh edge */
+    mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 90%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 90%);
 }
 
 .greenOverlay {
@@ -39,8 +43,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* Deeper gradient for better blending at bottom */
-    background: linear-gradient(to top, #082F19 0%, #082f19cc 20%, transparent 100%);
+    /* Gradient that fades to transparent at the bottom to let page background through */
+    background: linear-gradient(to bottom, transparent 0%, rgba(8, 47, 25, 0.6) 40%, transparent 95%);
 }
 
 .blurLayer {
@@ -49,9 +53,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(12px);
-    mask-image: linear-gradient(to top, black 0%, transparent 80%);
-    -webkit-mask-image: linear-gradient(to top, black 0%, transparent 80%);
+    backdrop-filter: blur(60px);
+    /* Blur mask also fades out to transparent at the bottom */
+    mask-image: linear-gradient(to bottom, transparent 0%, black 40%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%, transparent 95%);
+    z-index: 2;
 }
 
 /* Content Container */
@@ -73,8 +79,8 @@
 /* Contact Methods Section */
 .contactMethodsSec {
     width: 100%;
-    padding-bottom: 5vh;
-    margin-top: 1.5rem; /* Moved section down */
+    /* padding-bottom: 5vh; */
+    margin-top: 1.5rem; 
 }
 
 .cardsContainer {
@@ -82,7 +88,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 2.5rem;
-    width: 95%;
+    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
 }

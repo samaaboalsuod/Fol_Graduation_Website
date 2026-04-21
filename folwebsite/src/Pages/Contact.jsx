@@ -5,6 +5,7 @@ import Nav from '../Components/Nav';
 import PageTitle from '../Components/PageTitle';
 import SectionTitles from '../Components/SectionTitles';
 import ContactMethodCard from '../Components/ContactMethodCard';
+import MapSection from '../Components/MapSection';
 import heroBg from '../Assets/Icons/heroBg.png';
 
 const Contact = () => {
@@ -78,7 +79,15 @@ const Contact = () => {
                         ))}
                     </div>
                 </section>
+
+                {/* Map Section */}
+                <section className="generalSec">
+                    <SectionTitles title="أو زرنا في أماكننا" />
+                    <MapSection />
+                </section>
             </div>
+
+            
         </div>
     );
 };

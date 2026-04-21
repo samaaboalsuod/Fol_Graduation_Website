@@ -1,0 +1,102 @@
+.mapContainer {
+    width: 100%;
+    position: relative;
+    height: 700px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mapContainer iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Matching overlay that dissolves on hover */
+.mapOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--darkText); /* Forest green match */
+    opacity: 0.7;
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none; /* Allows hover to reach map if needed, but we trigger off container */
+    z-index: 2;
+}
+
+.mapContainer:hover .mapOverlay {
+    opacity: 0;
+}
+
+.locationGlassCard {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 380px;
+    /* Lighter background for contrast with dark text */
+    background: rgba(250, 250, 234, 0.7); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 2.5rem;
+    color: var(--darkText); /* Dark text from root as requested */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 5;
+    text-align: right;
+    font-family: var(--arabicFont);
+    transition: all 0.4s ease;
+}
+
+.locationBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.addressText {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    font-family: var(--arabicFont);
+    color: var(--darkText);
+}
+
+.cityText {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin: 0;
+    font-family: var(--arabicFont);
+    color: var(--darkText);
+}
+
+.hoursBlock {
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(8, 47, 25, 0.2); /* Darker divider for dark theme */
+}
+
+.hoursText {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.9;
+    font-family: var(--arabicFont);
+    color: var(--darkText);
+}
+
+@media (max-width: 768px) {
+    .locationGlassCard {
+        width: calc(100% - 2rem);
+        right: 1rem;
+        bottom: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .mapContainer {
+        height: 600px;
+    }
+}
