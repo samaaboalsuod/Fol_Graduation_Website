@@ -1,0 +1,59 @@
+.contactMethodCard {
+    width: 280px;
+    /* height: 320px; */
+    /* Reduced from 380px */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* border-radius set via classes */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    /* Slightly reduced gap */
+    padding: 2.6rem 1rem;
+    transition: all 0.3s ease;
+    color: var(--lightText);
+    text-align: center;
+    font-family: var(--arabicFont);
+}
+
+.sharp-right {
+    border-radius: 140px 140px 0 140px;
+}
+
+.sharp-left {
+    border-radius: 140px 140px 140px 0;
+}
+
+.contactMethodCard:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.contactIconCont {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardInfo h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    /* Decreased from 600 */
+}
+
+.cardInfo p {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.contactMethodCard a {
+    text-decoration: none;
+
+}

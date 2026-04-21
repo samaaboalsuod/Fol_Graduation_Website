@@ -1,0 +1,108 @@
+.contactPage {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--bgGradient);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Nav Positioning */
+.navOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+/* Fixed/Absolute Hero Background */
+.heroBgLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+}
+
+.bgImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.25; /* Decreased opacity */
+    mix-blend-mode: soft-light;
+}
+
+.greenOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Deeper gradient for better blending at bottom */
+    background: linear-gradient(to top, #082F19 0%, #082f19cc 20%, transparent 100%);
+}
+
+.blurLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(12px);
+    mask-image: linear-gradient(to top, black 0%, transparent 80%);
+    -webkit-mask-image: linear-gradient(to top, black 0%, transparent 80%);
+}
+
+/* Content Container */
+.pageContent {
+    position: relative;
+    z-index: 10;
+    padding-top: 15vh; /* Space for Nav */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.heroTitleCont {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+/* Contact Methods Section */
+.contactMethodsSec {
+    width: 100%;
+    padding-bottom: 5vh;
+    margin-top: 1.5rem; /* Moved section down */
+}
+
+.cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+    .cardsContainer {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .pageContent {
+        padding-top: 10vh;
+    }
+    
+    .cardsContainer {
+        gap: 1rem;
+    }
+    
+    .heroBgLayer {
+        height: 120vh; /* Allow more space on mobile */
+    }
+}

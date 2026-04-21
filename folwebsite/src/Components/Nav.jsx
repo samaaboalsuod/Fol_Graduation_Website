@@ -8,7 +8,7 @@ import Menu from './Menu';
 import logo from '../Assets/Icons/logo.svg'; 
 import burger from '../Assets/Icons/burgerMenu.svg';
 
-const Nav = () => {
+const Nav = ({ hideWave }) => {
 
   const [isOpen, setIsOpen] = useState(false);
   // Mapping 5 flowers
@@ -21,20 +21,17 @@ const Nav = () => {
   ];
 
   return (
-    <nav>
+    <nav className={hideWave ? 'nav-no-wave' : ''}>
         
      {/* 1. The Full-Screen Menu Overlay */}
       {isOpen && <Menu closeMenu={() => setIsOpen(false)} />}
 
-      {/* 2. Your Wave and Flowers (only show when menu is closed) */}
-      {!isOpen && <div className="nav-wave-bg">...</div>}
-
+      {/* 2. Your Wave and Flowers (always rendered for hover effect) */}
       <div className="nav-wave-bg">
         <svg viewBox="0 0 1280 80" preserveAspectRatio="none">
            <path d="M0 0H1280V59.6865C1280 59.6865 1182.97 79.6865 1120 79.6865C1057.03 79.6865 1022.97 59.6865 960 59.6865C897.03 59.6865 862.97 79.6865 800 79.6865C737.03 79.6865 702.97 59.6865 640 59.6865C577.03 59.6865 542.97 79.6865 480 79.6865C417.03 79.6865 382.97 59.6865 320 59.6865C257.03 59.6865 222.97 79.6865 160 79.6865C97.0299 79.6865 0 59.6865 0 59.6865V0Z" fill="#FAFAEA"/>
         </svg>
       </div>
-
       
       {flowers.map((f) => (
         <div key={f.id} className="flower-layer" style={{ left: f.left, transform: `scale(${f.scale})`, transitionDelay: f.delay }}>

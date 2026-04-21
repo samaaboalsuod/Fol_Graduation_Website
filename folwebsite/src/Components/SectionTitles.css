@@ -1,0 +1,12 @@
+.sectionTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.sectionTitle h4 {
+    text-align: center;
+    margin: 0;
+}

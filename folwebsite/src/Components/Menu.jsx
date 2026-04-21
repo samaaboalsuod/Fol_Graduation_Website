@@ -20,7 +20,11 @@ const Menu = ({ closeMenu }) => {
       <ul className="menu-list">
         {menuItems.map((item, index) => (
           <li key={index} className="menu-item">
-            {item}
+            {item === "تواصل مع فل" ? (
+              <a href="/Contact" onClick={closeMenu}>{item}</a>
+            ) : (
+              item
+            )}
             <hr className="menu-divider" />
           </li>
         ))}
