@@ -6,7 +6,9 @@ import PageTitle from '../Components/PageTitle';
 import SectionTitles from '../Components/SectionTitles';
 import ContactMethodCard from '../Components/ContactMethodCard';
 import MapSection from '../Components/MapSection';
+import GlassyCTA from '../Components/GlassyCTA';
 import heroBg from '../Assets/Icons/heroBg.png';
+import Footer from '../Components/Footer.jsx';
 
 const Contact = () => {
     const [titleData, setTitleData] = useState(null);
@@ -36,7 +38,8 @@ const Contact = () => {
     }, []);
 
     return (
-        <div className="contactPage">
+
+        <>
             <div className="navOverlay">
                 <Nav hideWave={true} />
             </div>
@@ -85,10 +88,20 @@ const Contact = () => {
                     <SectionTitles title="أو زرنا في أماكننا" />
                     <MapSection />
                 </section>
+
+                {/* Question/Expert CTA */}
+                <GlassyCTA 
+                    title="هل تريد أن تسأل عن النبات؟"
+                    secondBtnText="انتقل لتسأل خبيرًا"
+                    secondBtnAction={() => console.log("Navigate to expert")}
+                />
             </div>
 
-            
-        </div>
+
+    <Footer />
+
+</>
+        
     );
 };
 
