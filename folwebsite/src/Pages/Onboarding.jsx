@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './Onboarding.css';
 
@@ -13,6 +14,7 @@ const Onboarding = () => {
 
     const [titleData, setTitleData] = useState(null);
     const [paths, setPaths] = useState([]);
+    const navigate = useNavigate();
 
 useEffect(() => {
         // 1. Fetch the Page Title (Row 6)
@@ -84,7 +86,7 @@ useEffect(() => {
                     iconAlt={path.Icon_Alt}
                     btnText={path.BtnText}
                     isHighlighted={path.Is_Highlighted}
-                    onClick={() => console.log(`Selected path: ${path.Id}`)}
+                    onClick={() => navigate('/Home')}
                 />
         ))}
     </section>

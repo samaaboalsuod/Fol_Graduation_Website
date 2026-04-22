@@ -12,17 +12,16 @@
     border: 0;
 }
 
-/* Matching overlay that dissolves on hover */
 .mapOverlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--darkText); /* Forest green match */
+    background: var(--darkText);
     opacity: 0.7;
     transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    pointer-events: none; /* Allows hover to reach map if needed, but we trigger off container */
+    pointer-events: none; 
     z-index: 2;
 }
 
@@ -35,14 +34,13 @@
     bottom: 2rem;
     right: 2rem;
     width: 380px;
-    /* Lighter background for contrast with dark text */
     background: rgba(250, 250, 234, 0.7); 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     padding: 2.5rem;
-    color: var(--darkText); /* Dark text from root as requested */
+    color: var(--darkText);
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -77,7 +75,7 @@
 .hoursBlock {
     margin-top: 0.5rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba(8, 47, 25, 0.2); /* Darker divider for dark theme */
+    border-top: 1px solid rgba(8, 47, 25, 0.2); 
 }
 
 .hoursText {

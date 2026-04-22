@@ -14,8 +14,8 @@ const RoutingApp = () => {
 
             <Routes>
 
-                <Route path='/' element={<Home />} />
-                <Route path='/Onboarding' element={<Onboarding />} />
+                <Route path='/' element={<Onboarding />} />
+                <Route path='/Home' element={<Home />} />
                 <Route path='/Contact' element={<Contact />} />
 
 

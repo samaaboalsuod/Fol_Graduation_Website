@@ -43,15 +43,14 @@ const Contact = () => {
             <div className="navOverlay">
                 <Nav hideWave={true} />
             </div>
-            
-            {/* Hero Background Layer (Starts from top) */}
+                    
             <div className="heroBgLayer">
                 <img src={heroBg} alt="Background" className="bgImg" />
                 <div className="greenOverlay"></div>
                 <div className="blurLayer"></div>
             </div>
 
-            {/* Page Content Overlay */}
+
             <div className="pageContent">
                 {/* Hero Title (Positioned like Onboarding) */}
                 <div className="heroTitleCont">
