@@ -19,23 +19,26 @@
     gap: .5vw;
 }
 
-.pageTitleCont h5{
-    font-family: var(--arabicFont);
-    color: var(--lightText);
-
-    font-size: 1.2rem;
-    font-weight: 300;
-}
-
 .pageTitleCont h2{
     line-height: 120%;
-    width: 30vw;
+    width: 100%;
+    max-width: 800px;
     font-family: var(--arabicFont);
     color: var(--lightText);
 
     font-size: 2.5rem;
     font-weight: 700;
 
+    text-align: center;
+}
+
+.pageTitleCont h5{
+    font-family: var(--arabicFont);
+    color: var(--lightText);
+
+    font-size: 1.2rem;
+    font-weight: 300;
+    max-width: 600px;
     text-align: center;
 }
 
