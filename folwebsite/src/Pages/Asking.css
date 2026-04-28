@@ -123,3 +123,25 @@
         gap: 1.5rem;
     }
 }
+
+/* FAQ Section Styling */
+.faqSec {
+    padding-bottom: 4rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.faqList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Let generalSec handle margins/padding */
+}
+
+@media (max-width: 768px) {
+    .faqSec {
+        margin-top: 2rem;
+        padding-bottom: 4rem;
+    }
+}

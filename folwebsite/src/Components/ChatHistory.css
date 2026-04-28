@@ -48,6 +48,20 @@
     border-color: rgba(255, 255, 255, 0.5);
 }
 
+@media (max-width: 768px) {
+    .historyHeader {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1.5rem;
+    }
+
+    .scrollControls {
+        position: static;
+        transform: none;
+        justify-content: center;
+    }
+}
+
 .historyScrollCont {
     width: 100%;
     overflow-x: auto;
