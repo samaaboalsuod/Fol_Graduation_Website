@@ -4,13 +4,16 @@ import Nav from '../Components/Nav';
 import PageTitle from '../Components/PageTitle';
 import SectionTitles from '../Components/SectionTitles';
 import ActionCard from '../Components/ActionCard';
+import ChatHistory from '../Components/ChatHistory';
 import Footer from '../Components/Footer.jsx';
+
 import heroBg from '../Assets/Icons/heroBg.png';
 import './Asking.css';
 
 const Asking = () => {
     const [titleData, setTitleData] = useState(null);
     const [services, setServices] = useState([]);
+    const [history, setHistory] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,10 +30,17 @@ const Asking = () => {
             const { data: servicesData } = await supabase
                 .from('Asking_Service')
                 .select('*')
-                .order('id', { ascending: true }); // ID 1 (Call), 2 (Chat), 3 (AI)
+                .order('id', { ascending: true });
             
-            // In RTL, the first element (ID 1 - Call/Recommended) appears on the right.
             if (servicesData) setServices(servicesData);
+
+            // Fetch Chat History
+            const { data: historyData } = await supabase
+                .from('webchathistory')
+                .select('*')
+                .order('id', { ascending: true });
+            
+            if (historyData) setHistory(historyData);
         };
 
         fetchData();
@@ -80,6 +90,9 @@ const Asking = () => {
                         ))}
                     </div>
                 </section>
+
+                {/* Chat History Section */}
+                <ChatHistory history={history} />
             </div>
 
             <Footer />
@@ -88,4 +101,5 @@ const Asking = () => {
 }
 
 export default Asking;
+
 

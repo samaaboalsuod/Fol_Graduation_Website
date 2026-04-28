@@ -1,0 +1,180 @@
+/* History Section */
+.historySec {
+    padding: 6rem 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.historyHeader {
+    width: 100%;
+    margin: 0 auto 0.5rem;
+    display: flex;
+    justify-content: center;
+    /* Perfectly center the title */
+    align-items: center;
+    padding: 0 4rem;
+    position: relative;
+    /* Context for absolute arrows */
+    direction: rtl;
+}
+
+.scrollControls {
+    position: absolute;
+    left: 4rem;
+    /* Match header padding */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 0.8rem;
+    z-index: 10;
+}
+
+.scrollBtn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scrollBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.historyScrollCont {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden; /* Fix vertical scroll without touching alignment */
+    padding: 0.5rem 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.historyScrollCont::-webkit-scrollbar {
+    display: none;
+}
+
+.historyTrack {
+    position: relative;
+    height: 380px;
+}
+
+.historyCurve {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.historyCards {
+    display: flex;
+    position: relative;
+    height: 100%;
+    z-index: 10;
+}
+
+.historyCard {
+    width: 320px;
+    flex-shrink: 0;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+    text-align: center;
+    font-family: var(--arabicFont);
+    color: #fff;
+    height: 300px;
+    /* Fixed height to keep them in the same line */
+    transition: all 0.4s ease;
+}
+
+/* All cards now share the same horizontal alignment */
+.historyCard.topCard,
+.historyCard.bottomCard {
+    padding: 0 1.5rem;
+    justify-content: center;
+}
+
+/* Adjust vertical translation to align all cards horizontally at the same level */
+.historyCard.topCard,
+.historyCard.bottomCard {
+    transform: translateY(4rem) !important;
+    /* All cards aligned horizontally */
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0.8rem;
+}
+
+.cardDate {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    font-weight: 300;
+}
+
+.arrowCircle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.arrowCircle img {
+    width: 12px;
+    height: 12px;
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.historyCard h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.historyCard p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.7;
+    margin: 0;
+    font-weight: 300;
+    max-width: 90%;
+}
+
+/* Vertical offset adjustments */
+.topCard {
+    transform: translateY(0);
+}
+
+.bottomCard {
+    transform: translateY(0);
+}
+
+.historyCard:hover {
+    transform: scale(1.02);
+}
