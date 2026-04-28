@@ -22,6 +22,8 @@ const Menu = ({ closeMenu }) => {
           <li key={index} className="menu-item">
             {item === "تواصل مع فل" ? (
               <a href="/Contact" onClick={closeMenu}>{item}</a>
+            ) : item === "اسأل خبيرًا" ? (
+              <a href="/Asking#ask-expert" onClick={closeMenu}>{item}</a>
             ) : (
               item
             )}

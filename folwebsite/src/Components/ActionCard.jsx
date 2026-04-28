@@ -7,7 +7,7 @@ import SecondButton from './SecondButton.jsx';
 
 const ActionCard = (props) => {
     return ( 
-        <div className={`actionCardCont ${props.isHighlighted ? 'highlighted-border' : ''}`}>
+        <div id={props.id} className={`actionCardCont ${props.isHighlighted ? 'highlighted-border' : ''}`}>
 
             <div className='topRow'>
 

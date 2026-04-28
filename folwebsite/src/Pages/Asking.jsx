@@ -111,6 +111,7 @@ const Asking = () => {
                         {services.map((service) => (
                             <ActionCard 
                                 key={service.id}
+                                id={service.NameAR === 'اسأل خبيرًا' ? 'ask-expert' : undefined}
                                 title={service.NameAR}
                                 subtitle={service.CardTagAR}
                                 discription={service.AppDisc}
