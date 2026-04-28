@@ -69,6 +69,43 @@
     margin-bottom: 2rem;
 }
 
+/* Services Section */
+.generalSec {
+    width: 100%;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicesSec {
+    margin-top: -5vh; /* Overlay hero slightly */
+    z-index: 20;
+}
+
+.cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 2rem auto 0;
+}
+
+/* Override ActionCard width for 3 cards layout */
+.servicesSec .actionCardCont {
+    width: 25vw;
+    min-width: 320px;
+    max-width: 400px;
+}
+
+@media (max-width: 1200px) {
+    .servicesSec .actionCardCont {
+        width: 40vw;
+    }
+}
+
 @media (max-width: 768px) {
     .pageContent {
         padding-top: 10vh;
@@ -76,5 +113,13 @@
     
     .heroBgLayer {
         height: 120vh; /* Allow more space on mobile */
+    }
+
+    .servicesSec .actionCardCont {
+        width: 90vw;
+    }
+
+    .cardsContainer {
+        gap: 1.5rem;
     }
 }
