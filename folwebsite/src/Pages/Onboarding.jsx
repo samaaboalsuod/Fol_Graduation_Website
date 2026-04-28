@@ -86,7 +86,7 @@ useEffect(() => {
                     iconAlt={path.Icon_Alt}
                     btnText={path.BtnText}
                     isHighlighted={path.Is_Highlighted}
-                    onClick={() => navigate('/Home')}
+                    onClick={() => path.BtnText === 'لنبدأ الرحلة بسهولة' ? navigate('/Questions') : navigate('/Home')}
                 />
         ))}
     </section>

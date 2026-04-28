@@ -6,13 +6,15 @@
     height: 100vh;
     background: rgba(8, 47, 25, 0.9); /* Your --darkText color with transparency */
     backdrop-filter: blur(15px); /* This creates the frosted glass look */
-    z-index: 20;
+    z-index: 200; /* Increased to be above everything */
     display: flex;
     flex-direction: column;
-    padding: 4vw 4vw;
+    padding: 4vw 4vw 8vw; /* Increased bottom padding */
     color: var(--lightText);
     font-family: var(--arabicFont);
     animation: slideInDown 0.5s ease-out;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 @keyframes slideInDown {

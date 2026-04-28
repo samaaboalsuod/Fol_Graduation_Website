@@ -55,9 +55,6 @@
     backdrop-filter: blur(8px);
 }
 
-.stepFlower.completed {
-    /* Keeps the blur from the base class */
-}
 
 .stepFlower.completed svg path {
     fill: rgba(250, 250, 234, 0.6); /* #FAFAEA 60% */

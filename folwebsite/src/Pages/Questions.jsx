@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CaretLeft, CaretRight, Sun, CloudSun, SunHorizon, Desktop, Armchair, House, BatteryLow, BatteryMedium, BatteryHigh, Plant, PottedPlant, Tree, Sparkle, Wind, Flower, PawPrint, Prohibit } from "@phosphor-icons/react";
 import OnboardingProgressBar from '../Components/OnboardingProgressBar';
 import OnboardingCard from '../Components/OnboardingCard';
+import SecondButton from '../Components/SecondButton';
 import logo from '../Assets/Icons/logo.svg';
 import './Questions.css';
 
@@ -119,12 +120,17 @@ const Questions = () => {
             </div>
 
             <div className="questionsFooter">
-                <button className="qNextBtn" onClick={nextStep}>
-                    <CaretRight size={20} weight="bold" />
-                    <span>{currentStep === steps.length - 1 ? 'شاهد الاقتراحات' : 'التالي'}</span>
-                </button>
+                <SecondButton 
+                    className="qNextBtn" 
+                    onClick={nextStep}
+                    text={
+                        <>
+                            <CaretRight size={20} weight="bold" />
+                            <span>{currentStep === steps.length - 1 ? 'شاهد الاقتراحات' : 'التالي'}</span>
+                        </>
+                    }
+                />
                 <button className="qSkipBtn" onClick={nextStep}>تخطي السؤال</button>
-
             </div>
         </div>
     );

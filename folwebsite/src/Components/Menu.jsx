@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Menu.css';
 
 import search from '../Assets/Icons/search.svg'; 
@@ -6,9 +7,15 @@ import close from '../Assets/Icons/x.svg';
 
 
 const Menu = ({ closeMenu }) => {
+  const navigate = useNavigate();
   const menuItems = [
     "عن فل", "تواصل مع فل", "تسوق مشتلنا", "الوظائف", "خدماتنا", "اسأل خبيرًا", "الاستدامة"
   ];
+
+  const handleStartQuiz = () => {
+    closeMenu();
+    navigate('/Questions');
+  };
 
   return (
     <div className="menu-overlay">
@@ -32,7 +39,7 @@ const Menu = ({ closeMenu }) => {
         ))}
       </ul>
 
-      <button className="cta-button">لنختر ما يناسبك معًا</button>
+      <button className="cta-button" onClick={handleStartQuiz}>لنختر ما يناسبك معًا</button>
     </div>
   );
 };
