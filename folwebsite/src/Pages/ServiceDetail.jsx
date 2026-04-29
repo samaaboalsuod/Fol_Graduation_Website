@@ -39,10 +39,11 @@ const ServiceDetail = () => {
             
             if (service) setServiceData(service);
 
+            const pageTitleId = parseInt(id) + 11;
             const { data: title } = await supabase
                 .from('PageTitle')
                 .select('*')
-                .eq('id', 12)
+                .eq('id', pageTitleId || 12)
                 .single();
             
             if (title) setTitleData(title);
@@ -197,7 +198,7 @@ const ServiceDetail = () => {
                 {/* Final CTA Section */}
                 <GlassyCTA 
                     title="جاهز لاختيار النباتات بثقة أو التحقق من صحة نباتك؟"
-                    mainBtnText="احجز استشارتك الآن"
+                    mainBtnText="احجز خدمتك الآن"
                     subText="نرد خلال 24 ساعة لتأكيد الموعد."
                 />
 
