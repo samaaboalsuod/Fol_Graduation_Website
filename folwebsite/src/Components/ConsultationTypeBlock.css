@@ -48,7 +48,7 @@
 
 /* Individual Item 2: Points Section */
 .pointsSection {
-    flex: 1;
+    flex: .7;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -101,13 +101,12 @@
     height: 100%;
     position: relative;
     overflow: hidden;
-    /* Matching aggressive radius on the connection side */
-    border-radius: 200px 200px 0px 200px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-radius: 140px 200px 0px 140px;
+
 }
 
 .consultationTypeBlockContainer.reverse .imagePart {
-    border-radius: 200px 200px 200px 0px;
+    border-radius: 200px 140px 140px 0px;
 }
 
 .imagePart img {
@@ -136,20 +135,44 @@
 }
 
 @media (max-width: 992px) {
-    .consultationTypeBlockContainer {
-        flex-direction: column;
+    .consultationTypeBlockContainer,
+    .consultationTypeBlockContainer.reverse {
+        flex-direction: column !important;
         height: auto;
-        gap: 1rem;
+        gap: .5rem;
     }
     
-    .verticalTitleSection, .pointsSection, .imagePart {
+    .verticalTitleSection, 
+    .pointsSection, 
+    .imagePart,
+    .consultationTypeBlockContainer.reverse .verticalTitleSection,
+    .consultationTypeBlockContainer.reverse .pointsSection,
+    .consultationTypeBlockContainer.reverse .imagePart {
         width: 100% !important;
-        border-radius: 30px !important;
+        border-radius: 40px !important; /* Uniform radius in mobile */
         height: auto;
     }
     
-    .imagePart { height: 300px; }
-    .verticalTitleSection { height: 70px; }
-    .outlinedTitle { writing-mode: horizontal-tb; transform: none; font-size: 2.2rem; }
-    .pointsSection { padding: 3rem 2rem; }
+    .imagePart { 
+        height: 350px; 
+        order: 1; /* Image always on top */
+    }
+    
+    .pointsSection { 
+        padding: 3rem 2rem; 
+        order: 2; /* Points in middle */
+    }
+    
+    .verticalTitleSection { 
+        height: 80px; 
+        order: 3; /* Title at bottom */
+        padding: 1rem;
+    }
+    
+    .outlinedTitle { 
+        writing-mode: horizontal-tb; 
+        transform: none; 
+        font-size: 2.2rem; 
+        letter-spacing: 2px;
+    }
 }

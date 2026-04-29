@@ -1,4 +1,4 @@
-import React from 'react';
+import { motion } from 'framer-motion';
 import { Flower } from '@phosphor-icons/react';
 import './ConsultationTypeBlock.css';
 
@@ -6,7 +6,13 @@ const ConsultationTypeBlock = ({ title, points, img, reverse }) => {
     const pointsList = points ? points.split(/[,\n]/).filter(p => p.trim() !== '') : [];
 
     return (
-        <div className={`consultationTypeBlockContainer ${reverse ? 'reverse' : ''}`}>
+        <motion.div 
+            className={`consultationTypeBlockContainer ${reverse ? 'reverse' : ''}`}
+            initial={{ opacity: 0, x: reverse ? -40 : 40, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
             {/* 
               Order in RTL: 
               First element in DOM -> Far Right
@@ -33,7 +39,7 @@ const ConsultationTypeBlock = ({ title, points, img, reverse }) => {
                 <img src={img} alt={title} />
                 <div className="imgOverlay"></div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

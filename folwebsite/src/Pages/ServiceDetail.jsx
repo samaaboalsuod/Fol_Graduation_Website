@@ -20,6 +20,7 @@ import NeedHelpCard from '../Components/NeedHelpCard';
 import { ClipboardText, Plant, Broom, SunDim } from '@phosphor-icons/react';
 import InclusionCard from '../Components/InclusionCard';
 import ConsultationTypeBlock from '../Components/ConsultationTypeBlock';
+import StepItem from '../Components/StepItem';
 
 const ServiceDetail = () => {
     const { id } = useParams();
@@ -103,13 +104,7 @@ const ServiceDetail = () => {
                 </section>
 
                 {/* Need Help Section */}
-                <motion.section 
-                    className="generalSec2"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                >
+                <section className="generalSec2">
                     <SectionTitles title="هل تحتاج المساعدة لنباتاتك؟" />
                     
                     <div className="stairsContainer">
@@ -135,16 +130,10 @@ const ServiceDetail = () => {
                             />
                         </div>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* What's Included Section */}
-                <motion.section 
-                    className="generalSec2"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                >
+                <section className="generalSec2">
                     <SectionTitles title="ماذا تشمل الاستشارة؟" />
                     
                     <div className="inclusionGrid">
@@ -153,16 +142,10 @@ const ServiceDetail = () => {
                         <InclusionCard text={serviceData.Inc3} icon={Broom} />
                         <InclusionCard text={serviceData.Inc4} icon={SunDim} />
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Types of Consultations Section */}
-                <motion.section 
-                    className="generalSec2"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                >
+                <section className="generalSec2">
                     <SectionTitles title="أنواع الاستشارات" />
                     
                     <ConsultationTypeBlock 
@@ -178,7 +161,37 @@ const ServiceDetail = () => {
                         img={serviceData.Adv2Img || serviceData.Photo} 
                         reverse={true}
                     />
-                </motion.section>
+                </section>
+
+                {/* How to Benefit Section */}
+                <section className="generalSec2">
+                    <SectionTitles title="كيف تستفيد من الخدمة؟" />
+                    
+                    <StepItem 
+                        number="01" 
+                        title={serviceData.Step1T} 
+                        description={serviceData.Step1D} 
+                        reverse={false} 
+                    />
+                    <StepItem 
+                        number="02" 
+                        title={serviceData.Step2T} 
+                        description={serviceData.Step2D} 
+                        reverse={true} 
+                    />
+                    <StepItem 
+                        number="03" 
+                        title={serviceData.Step3T} 
+                        description={serviceData.Step3D} 
+                        reverse={false} 
+                    />
+                    <StepItem 
+                        number="04" 
+                        title={serviceData.Step4T} 
+                        description={serviceData.Step4D} 
+                        reverse={true} 
+                    />
+                </section>
 
                 {/* Future sections will be added here */}
             </div>
