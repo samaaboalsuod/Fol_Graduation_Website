@@ -82,7 +82,7 @@
 
 .serviceDetailPage .heroTitleCont {
     width: 100%;
-    margin-bottom: 10rem !important; /* Lowered cards significantly */
+    margin-bottom: 6rem !important; /* Lowered cards significantly */
 }
 
 /* Service Type Selection Section */
