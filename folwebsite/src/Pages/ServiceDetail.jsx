@@ -19,6 +19,7 @@ import NeedHelpCard from '../Components/NeedHelpCard';
 
 import { ClipboardText, Plant, Broom, SunDim } from '@phosphor-icons/react';
 import InclusionCard from '../Components/InclusionCard';
+import ConsultationTypeBlock from '../Components/ConsultationTypeBlock';
 
 const ServiceDetail = () => {
     const { id } = useParams();
@@ -152,6 +153,31 @@ const ServiceDetail = () => {
                         <InclusionCard text={serviceData.Inc3} icon={Broom} />
                         <InclusionCard text={serviceData.Inc4} icon={SunDim} />
                     </div>
+                </motion.section>
+
+                {/* Types of Consultations Section */}
+                <motion.section 
+                    className="generalSec2"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                >
+                    <SectionTitles title="أنواع الاستشارات" />
+                    
+                    <ConsultationTypeBlock 
+                        title={serviceData.Adv1T} 
+                        points={serviceData.Adv1Pts} 
+                        img={serviceData.Adv1Img || serviceData.Photo} 
+                        reverse={false}
+                    />
+                    
+                    <ConsultationTypeBlock 
+                        title={serviceData.Adv2T} 
+                        points={serviceData.Adv2Pts} 
+                        img={serviceData.Adv2Img || serviceData.Photo} 
+                        reverse={true}
+                    />
                 </motion.section>
 
                 {/* Future sections will be added here */}

@@ -1,0 +1,155 @@
+.consultationTypeBlockContainer {
+    display: flex;
+    width: 100%;
+    height: 480px;
+    margin-bottom: 4rem;
+    direction: rtl;
+    align-items: center;
+    background: transparent; /* Main container is transparent */
+    border: none;
+    box-shadow: none;
+}
+
+.consultationTypeBlockContainer.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Individual Item 1: Vertical Title Section */
+.verticalTitleSection {
+    width: 240px;
+    height: 100%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.112);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.777);
+    /* Matching the outer curve of the pill on the right side */
+    border-radius: 0px 500px 500px 500px; 
+    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.02);
+}
+
+.consultationTypeBlockContainer.reverse .verticalTitleSection {
+    border-radius: 500px 0px 500px 500px;
+}
+
+.outlinedTitle {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: #09321B;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    letter-spacing: 4px;
+    paint-order: stroke fill;
+}
+
+/* Individual Item 2: Points Section */
+.pointsSection {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 5rem;
+    background: rgba(255, 255, 255, 0.023);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.337);
+    /* Aggressive radius on the connection side */
+    border-radius: 200px 0px 200px 0px;
+}
+
+.consultationTypeBlockContainer.reverse .pointsSection {
+    border-radius: 0px 200px 0px 200px;
+}
+
+.pointsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.pointItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.pointText {
+    font-family: var(--arabicFont);
+    color: var(--lightText);
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: right;
+}
+
+.pointIcon {
+    color: var(--lightText);
+    opacity: 0.9;
+}
+
+/* Individual Item 3: Image Part */
+.imagePart {
+    flex: 1.5;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* Matching aggressive radius on the connection side */
+    border-radius: 200px 200px 0px 200px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.consultationTypeBlockContainer.reverse .imagePart {
+    border-radius: 200px 200px 200px 0px;
+}
+
+.imagePart img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imgOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(8, 47, 25, 0.5) 0%, transparent 60%);
+}
+
+@media (max-width: 1200px) {
+    .consultationTypeBlockContainer {
+        height: 400px;
+    }
+    .pointsSection, .imagePart {
+        border-radius: 80px 200px 200px 80px !important;
+    }
+    .consultationTypeBlockContainer.reverse .pointsSection,
+    .consultationTypeBlockContainer.reverse .imagePart {
+        border-radius: 200px 80px 80px 200px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .consultationTypeBlockContainer {
+        flex-direction: column;
+        height: auto;
+        gap: 1rem;
+    }
+    
+    .verticalTitleSection, .pointsSection, .imagePart {
+        width: 100% !important;
+        border-radius: 30px !important;
+        height: auto;
+    }
+    
+    .imagePart { height: 300px; }
+    .verticalTitleSection { height: 70px; }
+    .outlinedTitle { writing-mode: horizontal-tb; transform: none; font-size: 2.2rem; }
+    .pointsSection { padding: 3rem 2rem; }
+}
