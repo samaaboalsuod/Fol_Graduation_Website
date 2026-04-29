@@ -1,0 +1,140 @@
+.serviceDetailPage {
+    background: var(--bgGradient);
+    min-height: 100vh;
+    color: var(--lightText);
+    direction: rtl;
+    overflow-x: hidden;
+}
+
+/* Nav Positioning */
+.serviceDetailPage .navOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+/* Hero Background Layer - Scoped to avoid affecting other pages */
+.serviceDetailPage .heroBgLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.serviceDetailPage .bgImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5; /* Increased opacity for clarity */
+    mix-blend-mode: soft-light;
+    /* Stronger fade at the bottom to ensure complete blending */
+    mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 90%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 90%);
+}
+
+.serviceDetailPage .greenOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Extremely light overlay for ServiceDetail only */
+    background: linear-gradient(to bottom, transparent 0%, rgba(8, 47, 25, 0.02) 50%, var(--darkText) 100%);
+}
+
+.serviceDetailPage .blurLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(20px); /* Reduced blur for clarity */
+    -webkit-backdrop-filter: blur(20px);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 50%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 50%, black 90%, transparent 100%);
+    z-index: 2;
+}
+
+/* Page Content */
+.serviceDetailPage .pageContent {
+    position: relative;
+    z-index: 10;
+    padding-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Scoped Section Reset for Gaps */
+.serviceDetailPage .generalSec {
+    width: 100%;
+    padding: 0 2rem !important; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.serviceDetailPage .heroTitleCont {
+    width: 100%;
+    margin-bottom: 10rem !important; /* Lowered cards significantly */
+}
+
+/* Service Type Selection Section */
+.serviceDetailPage .serviceTypeSec {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 0 !important;
+}
+
+.serviceDetailPage .typeCardsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.serviceDetailPage .bookingBtnCont {
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+}
+
+/* Loading state */
+.serviceDetailPage .loading {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bgGradient);
+    color: var(--lightText);
+    font-family: var(--arabicFont);
+    font-size: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .serviceDetailPage .typeCardsContainer {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .serviceDetailPage .typeCardsContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .serviceDetailPage .pageContent {
+        padding-top: 10vh;
+    }
+}
