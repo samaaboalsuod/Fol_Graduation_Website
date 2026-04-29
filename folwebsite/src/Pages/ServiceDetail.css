@@ -101,14 +101,11 @@
     margin-top: 1rem;
 }
 
-.needHelpSec {
-    width: 100%;
-}
 
 .stairsContainer {
     width: 100%;
     display: flex;
-    justify-content: center; /* Center them but allow expansion */
+    justify-content: space-between; 
     gap: 1rem;
     align-items: flex-start;
 }
@@ -124,6 +121,13 @@
 
 .serviceDetailPage .stair3 {
     margin-top: 6rem;
+}
+
+.inclusionGrid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
 }
 
 /* Loading state */
@@ -183,5 +187,16 @@
 
     .serviceDetailPage .pageContent {
         padding-top: 10vh;
+    }
+
+    .inclusionGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .inclusionGrid {
+        grid-template-columns: 1fr;
     }
 }

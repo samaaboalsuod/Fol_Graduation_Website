@@ -17,6 +17,9 @@ import ServiceTypeCard from '../Components/ServiceTypeCard';
 import { motion } from 'framer-motion';
 import NeedHelpCard from '../Components/NeedHelpCard';
 
+import { ClipboardText, Plant, Broom, SunDim } from '@phosphor-icons/react';
+import InclusionCard from '../Components/InclusionCard';
+
 const ServiceDetail = () => {
     const { id } = useParams();
     const [serviceData, setServiceData] = useState(null);
@@ -100,7 +103,7 @@ const ServiceDetail = () => {
 
                 {/* Need Help Section */}
                 <motion.section 
-                    className="generalSec"
+                    className="generalSec2"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -130,6 +133,24 @@ const ServiceDetail = () => {
                                 alt={serviceData.Need3Alt} 
                             />
                         </div>
+                    </div>
+                </motion.section>
+
+                {/* What's Included Section */}
+                <motion.section 
+                    className="generalSec2"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <SectionTitles title="ماذا تشمل الاستشارة؟" />
+                    
+                    <div className="inclusionGrid">
+                        <InclusionCard text={serviceData.Inc1} icon={ClipboardText} />
+                        <InclusionCard text={serviceData.Inc2} icon={Plant} />
+                        <InclusionCard text={serviceData.Inc3} icon={Broom} />
+                        <InclusionCard text={serviceData.Inc4} icon={SunDim} />
                     </div>
                 </motion.section>
 
