@@ -30,7 +30,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.5; /* Increased opacity for clarity */
+    opacity: 0.5;
+    /* Increased opacity for clarity */
     mix-blend-mode: soft-light;
     /* Stronger fade at the bottom to ensure complete blending */
     mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 90%);
@@ -53,15 +54,16 @@
     left: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(20px); /* Reduced blur for clarity */
+    backdrop-filter: blur(20px);
+    /* Reduced blur for clarity */
     -webkit-backdrop-filter: blur(20px);
     mask-image: linear-gradient(to bottom, transparent 0%, black 50%, black 90%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 50%, black 90%, transparent 100%);
     z-index: 2;
 }
 
-/* Page Content */
-.serviceDetailPage .pageContent {
+
+.pageContent {
     position: relative;
     z-index: 10;
     padding-top: 15vh;
@@ -71,32 +73,23 @@
     min-height: 100vh;
 }
 
-/* Scoped Section Reset for Gaps */
-.serviceDetailPage .generalSec {
-    width: 100%;
-    padding: 0 2rem !important; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.serviceDetailPage .heroTitleCont {
+.heroTitleCont {
     width: 100%;
-    margin-bottom: 6rem !important; /* Lowered cards significantly */
+    margin-bottom: 6rem !important;
 }
 
 /* Service Type Selection Section */
-.serviceDetailPage .serviceTypeSec {
+.serviceTypeSec {
     width: 100%;
-    max-width: 1400px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    /* gap: 1.5rem; */
     margin-top: 0 !important;
 }
 
-.serviceDetailPage .typeCardsContainer {
+.typeCardsContainer {
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -104,9 +97,33 @@
     padding: 0 20px;
 }
 
-.serviceDetailPage .bookingBtnCont {
+.bookingBtnCont {
     margin-top: 1rem;
-    margin-bottom: 5rem;
+}
+
+.needHelpSec {
+    width: 100%;
+}
+
+.stairsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center them but allow expansion */
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.stairItem {
+    flex: 1; /* Allow each item to grow and fill the space */
+    max-width: 450px; /* Optional: limit growth for aesthetics */
+}
+
+.serviceDetailPage .stair2 {
+    margin-top: 3rem;
+}
+
+.serviceDetailPage .stair3 {
+    margin-top: 6rem;
 }
 
 /* Loading state */
@@ -126,6 +143,24 @@
     .serviceDetailPage .typeCardsContainer {
         gap: 1.5rem;
     }
+
+    .serviceDetailPage .stairsContainer {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .serviceDetailPage .stairsContainer {
+        gap: 1rem;
+    }
+
+    .serviceDetailPage .stair2 {
+        margin-top: 3rem;
+    }
+
+    .serviceDetailPage .stair3 {
+        margin-top: 6rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -133,7 +168,19 @@
         flex-direction: column;
         align-items: center;
     }
-    
+
+    .serviceDetailPage .stairsContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        margin-top: 3rem;
+    }
+
+    .serviceDetailPage .stair2,
+    .serviceDetailPage .stair3 {
+        margin-top: 0;
+    }
+
     .serviceDetailPage .pageContent {
         padding-top: 10vh;
     }

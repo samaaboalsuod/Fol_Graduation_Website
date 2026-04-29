@@ -14,6 +14,9 @@ import ser1Icon2 from '../Assets/Icons/ser1Icon2.svg';
 
 import ServiceTypeCard from '../Components/ServiceTypeCard';
 
+import { motion } from 'framer-motion';
+import NeedHelpCard from '../Components/NeedHelpCard';
+
 const ServiceDetail = () => {
     const { id } = useParams();
     const [serviceData, setServiceData] = useState(null);
@@ -22,7 +25,6 @@ const ServiceDetail = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            // Fetch Service Data by id
             const { data: service } = await supabase
                 .from('Service')
                 .select('*')
@@ -31,7 +33,6 @@ const ServiceDetail = () => {
             
             if (service) setServiceData(service);
 
-            // Fetch Page Title (id 12)
             const { data: title } = await supabase
                 .from('PageTitle')
                 .select('*')
@@ -46,7 +47,6 @@ const ServiceDetail = () => {
 
     if (!serviceData || !titleData) return <div className="loading">جاري التحميل...</div>;
 
-    // Icon mapping logic
     const getIcons = (serviceId) => {
         if (serviceId === "1") return [ser1Icon2, ser1Icon1];
         return [ser1Icon2, ser1Icon1]; 
@@ -97,6 +97,41 @@ const ServiceDetail = () => {
                         <MainButton text="احجز الآن" onClick={() => console.log("Booking flow started")} />
                     </div>
                 </section>
+
+                {/* Need Help Section */}
+                <motion.section 
+                    className="generalSec"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                    <SectionTitles title="هل تحتاج المساعدة لنباتاتك؟" />
+                    
+                    <div className="stairsContainer">
+                        <div className="stairItem stair1">
+                            <NeedHelpCard 
+                                text={serviceData.Need1T} 
+                                img={serviceData.Need1Img} 
+                                alt={serviceData.Need1Alt} 
+                            />
+                        </div>
+                        <div className="stairItem stair2">
+                            <NeedHelpCard 
+                                text={serviceData.Need2T} 
+                                img={serviceData.Need2Img} 
+                                alt={serviceData.Need2Alt} 
+                            />
+                        </div>
+                        <div className="stairItem stair3">
+                            <NeedHelpCard 
+                                text={serviceData.Need3T} 
+                                img={serviceData.Need3Img} 
+                                alt={serviceData.Need3Alt} 
+                            />
+                        </div>
+                    </div>
+                </motion.section>
 
                 {/* Future sections will be added here */}
             </div>
