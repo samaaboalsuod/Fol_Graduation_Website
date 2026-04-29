@@ -36,16 +36,15 @@ const ServiceDetail = () => {
                 .select('*')
                 .eq('id', id || 1)
                 .single();
-            
+
             if (service) setServiceData(service);
 
-            const pageTitleId = parseInt(id) + 11;
             const { data: title } = await supabase
                 .from('PageTitle')
                 .select('*')
-                .eq('id', pageTitleId || 12)
+                .eq('id', 12)
                 .single();
-            
+
             if (title) setTitleData(title);
         };
 
@@ -56,7 +55,7 @@ const ServiceDetail = () => {
 
     const getIcons = (serviceId) => {
         if (serviceId === "1") return [ser1Icon2, ser1Icon1];
-        return [ser1Icon2, ser1Icon1]; 
+        return [ser1Icon2, ser1Icon1];
     };
 
     const currentIcons = getIcons(id || "1");
@@ -75,26 +74,26 @@ const ServiceDetail = () => {
 
             <div className="pageContent">
                 <div className="heroTitleCont">
-                    <PageTitle 
-                        title={titleData.Title} 
+                    <PageTitle
+                        title={titleData.Title}
                         subtitle={titleData.SubTitle}
-                        discription={titleData.Description} 
+                        discription={titleData.Description}
                     />
                 </div>
 
                 <section className="generalSec serviceTypeSec">
                     <SectionTitles title="احجز الاستشارة الآن" />
-                    
+
                     <div className="typeCardsContainer">
-                        <ServiceTypeCard 
-                            title={serviceData.Adv1T} 
-                            icon={currentIcons[0]} 
+                        <ServiceTypeCard
+                            title={serviceData.Adv1T}
+                            icon={currentIcons[0]}
                             selected={selectedType === 0}
                             onClick={() => setSelectedType(0)}
                         />
-                        <ServiceTypeCard 
-                            title={serviceData.Adv2T} 
-                            icon={currentIcons[1]} 
+                        <ServiceTypeCard
+                            title={serviceData.Adv2T}
+                            icon={currentIcons[1]}
                             selected={selectedType === 1}
                             onClick={() => setSelectedType(1)}
                         />
@@ -108,27 +107,27 @@ const ServiceDetail = () => {
                 {/* Need Help Section */}
                 <section className="generalSec2">
                     <SectionTitles title="هل تحتاج المساعدة لنباتاتك؟" />
-                    
+
                     <div className="stairsContainer">
                         <div className="stairItem stair1">
-                            <NeedHelpCard 
-                                text={serviceData.Need1T} 
-                                img={serviceData.Need1Img} 
-                                alt={serviceData.Need1Alt} 
+                            <NeedHelpCard
+                                text={serviceData.Need1T}
+                                img={serviceData.Need1Img}
+                                alt={serviceData.Need1Alt}
                             />
                         </div>
                         <div className="stairItem stair2">
-                            <NeedHelpCard 
-                                text={serviceData.Need2T} 
-                                img={serviceData.Need2Img} 
-                                alt={serviceData.Need2Alt} 
+                            <NeedHelpCard
+                                text={serviceData.Need2T}
+                                img={serviceData.Need2Img}
+                                alt={serviceData.Need2Alt}
                             />
                         </div>
                         <div className="stairItem stair3">
-                            <NeedHelpCard 
-                                text={serviceData.Need3T} 
-                                img={serviceData.Need3Img} 
-                                alt={serviceData.Need3Alt} 
+                            <NeedHelpCard
+                                text={serviceData.Need3T}
+                                img={serviceData.Need3Img}
+                                alt={serviceData.Need3Alt}
                             />
                         </div>
                     </div>
@@ -137,7 +136,7 @@ const ServiceDetail = () => {
                 {/* What's Included Section */}
                 <section className="generalSec2">
                     <SectionTitles title="ماذا تشمل الاستشارة؟" />
-                    
+
                     <div className="inclusionGrid">
                         <InclusionCard text={serviceData.Inc1} icon={ClipboardText} />
                         <InclusionCard text={serviceData.Inc2} icon={Plant} />
@@ -149,18 +148,18 @@ const ServiceDetail = () => {
                 {/* Types of Consultations Section */}
                 <section className="generalSec2">
                     <SectionTitles title="أنواع الاستشارات" />
-                    
-                    <ConsultationTypeBlock 
-                        title={serviceData.Adv1T} 
-                        points={serviceData.Adv1Pts} 
-                        img={serviceData.Adv1Img || serviceData.Photo} 
+
+                    <ConsultationTypeBlock
+                        title={serviceData.Adv1T}
+                        points={serviceData.Adv1Pts}
+                        img={serviceData.Adv1Img || serviceData.Photo}
                         reverse={false}
                     />
-                    
-                    <ConsultationTypeBlock 
-                        title={serviceData.Adv2T} 
-                        points={serviceData.Adv2Pts} 
-                        img={serviceData.Adv2Img || serviceData.Photo} 
+
+                    <ConsultationTypeBlock
+                        title={serviceData.Adv2T}
+                        points={serviceData.Adv2Pts}
+                        img={serviceData.Adv2Img || serviceData.Photo}
                         reverse={true}
                     />
                 </section>
@@ -168,35 +167,35 @@ const ServiceDetail = () => {
                 {/* How to Benefit Section */}
                 <section className="generalSec2">
                     <SectionTitles title="كيف تستفيد من الخدمة؟" />
-                    
-                    <StepItem 
-                        number="01" 
-                        title={serviceData.Step1T} 
-                        description={serviceData.Step1D} 
-                        reverse={false} 
+
+                    <StepItem
+                        number="01"
+                        title={serviceData.Step1T}
+                        description={serviceData.Step1D}
+                        reverse={false}
                     />
-                    <StepItem 
-                        number="02" 
-                        title={serviceData.Step2T} 
-                        description={serviceData.Step2D} 
-                        reverse={true} 
+                    <StepItem
+                        number="02"
+                        title={serviceData.Step2T}
+                        description={serviceData.Step2D}
+                        reverse={true}
                     />
-                    <StepItem 
-                        number="03" 
-                        title={serviceData.Step3T} 
-                        description={serviceData.Step3D} 
-                        reverse={false} 
+                    <StepItem
+                        number="03"
+                        title={serviceData.Step3T}
+                        description={serviceData.Step3D}
+                        reverse={false}
                     />
-                    <StepItem 
-                        number="04" 
-                        title={serviceData.Step4T} 
-                        description={serviceData.Step4D} 
-                        reverse={true} 
+                    <StepItem
+                        number="04"
+                        title={serviceData.Step4T}
+                        description={serviceData.Step4D}
+                        reverse={true}
                     />
                 </section>
 
                 {/* Final CTA Section */}
-                <GlassyCTA 
+                <GlassyCTA
                     title="جاهز لاختيار النباتات بثقة أو التحقق من صحة نباتك؟"
                     mainBtnText="احجز خدمتك الآن"
                     subText="نرد خلال 24 ساعة لتأكيد الموعد."
