@@ -21,6 +21,7 @@ import { ClipboardText, Plant, Broom, SunDim } from '@phosphor-icons/react';
 import InclusionCard from '../Components/InclusionCard';
 import ConsultationTypeBlock from '../Components/ConsultationTypeBlock';
 import StepItem from '../Components/StepItem';
+import GlassyCTA from '../Components/GlassyCTA';
 
 const ServiceDetail = () => {
     const { id } = useParams();
@@ -192,6 +193,13 @@ const ServiceDetail = () => {
                         reverse={true} 
                     />
                 </section>
+
+                {/* Final CTA Section */}
+                <GlassyCTA 
+                    title="جاهز لاختيار النباتات بثقة أو التحقق من صحة نباتك؟"
+                    mainBtnText="احجز استشارتك الآن"
+                    subText="نرد خلال 24 ساعة لتأكيد الموعد."
+                />
 
                 {/* Future sections will be added here */}
             </div>
