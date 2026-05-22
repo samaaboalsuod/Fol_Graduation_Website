@@ -66,3 +66,35 @@ h5{
     justify-content: center;
 
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        width: 100% !important;
+        font-size: 2.2rem !important;
+        text-align: center;
+    }
+    h2 {
+        font-size: 1.05rem !important;
+        text-align: center;
+    }
+    h3 {
+        font-size: 1.8rem !important;
+        text-align: center;
+    }
+    h4 {
+        font-size: 1.3rem !important;
+    }
+    h5 {
+        font-size: 1.2rem !important;
+    }
+    .generalSec {
+        padding: 0 16px;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .generalSec2 {
+        padding: 16px;
+        gap: 1rem;
+    }
+}

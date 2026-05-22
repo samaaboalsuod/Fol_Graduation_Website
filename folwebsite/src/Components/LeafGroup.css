@@ -92,3 +92,17 @@
     font-family: var(--arabicFont);
     font-weight: 600;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .leaf-cluster {
+        width: 160px !important;
+        height: 160px !important;
+    }
+    .leaf {
+        width: 80px !important;
+    }
+    .category-title {
+        font-size: 1.1rem !important;
+    }
+}

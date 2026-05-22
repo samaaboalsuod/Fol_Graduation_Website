@@ -49,17 +49,17 @@ const PlantModel = ({ modelRef }) => {
 
       // 2. PLANT MOVEMENT
       tl.to(modelRef.current.position, { 
-        x: () => window.innerWidth > 1200 ? 1.8 : 1.43, 
-        y: () => window.innerHeight > 600 ? -1.8 : -2.5,
+        x: () => window.innerWidth > 1200 ? 1.8 : (window.innerWidth > 768 ? 1.43 : 0), 
+        y: () => window.innerWidth > 768 ? (window.innerHeight > 600 ? -1.8 : -2.5) : -1.8,
         z: 0,
         duration: 1, 
         ease: "sine.inOut" // Changed to inOut to match the 'gentle' vibe
       }, 0.1); // Delay the movement slightly so the room 'wakes up' first
 
       tl.to(modelRef.current.scale, { 
-        x: () => window.innerWidth > 1200 ? 1.8 : 1.6, 
-        y: () => window.innerWidth > 1200 ? 1.8 : 1.6, 
-        z: () => window.innerWidth > 1200 ? 1.8 : 1.6,
+        x: () => window.innerWidth > 1200 ? 1.8 : (window.innerWidth > 768 ? 1.6 : 1.1), 
+        y: () => window.innerWidth > 1200 ? 1.8 : (window.innerWidth > 768 ? 1.6 : 1.1), 
+        z: () => window.innerWidth > 1200 ? 1.8 : (window.innerWidth > 768 ? 1.6 : 1.1),
         duration: 1,
         ease: "power1.inOut"
       }, 0.1);
@@ -96,15 +96,15 @@ tl.to(".hero-logo", {
 
 tl.to(".line-1", {
   opacity: 1,
-  y: 150,
-  x: 470,
+  y: () => window.innerWidth > 768 ? 150 : 0,
+  x: () => window.innerWidth > 768 ? 470 : 0,
   duration: 1,
   ease: "power2.out"
 }, 0.6); // Starts at 60% of scroll
 
 tl.to(".line-2", {
   opacity: 1,
-  y: 70,
+  y: () => window.innerWidth > 768 ? 70 : 10,
   x: 0,
   duration: 1.2,
   ease: "power2.out"
@@ -113,7 +113,7 @@ tl.to(".line-2", {
 // 5. Control "جربها الآن" (The Button/Link)
 tl.to(".line-3", {
   opacity: 1,
-  y: -200,
+  y: () => window.innerWidth > 768 ? -200 : 0,
   duration: 2,
   ease: "power2.out"
 }, 0.8); // Appears last, when the room is fully bright

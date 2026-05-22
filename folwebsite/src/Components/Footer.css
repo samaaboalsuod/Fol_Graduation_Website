@@ -15,7 +15,7 @@ footer{
 
 }
 
-.foorterTop{
+.footerTop{
     width: 80%;
 
     /* background-color: rgba(0, 255, 255, 0.356); */
@@ -183,13 +183,13 @@ footer hr{
     transform: translateY(0);
 }
 
-.socilaCont{
+.socialCont{
     display: flex;
     gap: 1vw;
     align-items: center;
 }
 
-.footerBottRight{
+.footerBottomRight{
     display: flex;
     gap: 4vw;
     align-items: center;
@@ -249,4 +249,108 @@ footer hr{
 .topArrow:active {
     transform: translateY(-2px) scale(0.95);
     transition: transform 0.1s ease;
+}
+
+/* Tablet Responsiveness */
+@media (max-width: 1024px) {
+    footer {
+        padding: 6vw;
+        gap: 4vw;
+    }
+    .footerTop {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 6vw;
+    }
+    .footerBottom {
+        flex-wrap: wrap;
+        gap: 4vw;
+    }
+    .footerBottomRight {
+        flex-wrap: wrap;
+        gap: 4vw;
+    }
+    .newsInputCont {
+        gap: 1vw;
+    }
+    .newsInputCont input {
+        padding: 10px 15px;
+    }
+    .subscribe-btn {
+        padding: 10px 20px;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    footer {
+        padding: 40px 24px;
+        gap: 32px;
+        align-items: stretch;
+    }
+    .footerTop {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 32px;
+        width: 100%;
+    }
+    .footerColumn {
+        gap: 8px;
+    }
+    .footerColumn h5 {
+        font-size: 1.15rem;
+        margin-bottom: 0.75rem;
+    }
+    .footerColumn p {
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+    }
+    .footerBottom {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 32px;
+    }
+    .footerBottomRight {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 32px;
+        width: 100%;
+    }
+    .newsCont {
+        width: 100%;
+        gap: 16px;
+    }
+    .newsCont h5 {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+    .newsInputCont {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+        width: 100%;
+    }
+    .newsInputCont input {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 0.95rem;
+    }
+    .subscribe-btn {
+        width: 100%;
+        padding: 12px 16px;
+        text-align: center;
+        font-size: 0.95rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .socialCont {
+        gap: 16px;
+        margin-top: 8px;
+    }
+    .topArrow {
+        align-self: center;
+        margin-top: 16px;
+        gap: 8px;
+    }
 }

@@ -217,3 +217,72 @@
     transform: scale(1.05);
     background: #f0f0f0;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .silver-roots-overlay {
+        opacity: 0.15;
+        width: 100%;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    .section-main-title {
+        top: 4vh;
+        right: 50% !important;
+        transform: translateX(50%) !important;
+        font-size: 1.8rem !important;
+        text-align: center;
+        width: 100%;
+    }
+    .service-counter {
+        top: 4vh;
+        left: 6vw !important;
+        font-size: 0.9rem;
+    }
+    .service-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 80px 24px;
+        gap: 16px;
+        height: 100%;
+    }
+    .title-card,
+    .description-card,
+    .stat-card,
+    .cta-container {
+        position: static !important;
+        transform: translateY(20px) scale(0.95) !important;
+        width: 100% !important;
+        max-width: 320px !important;
+        height: auto !important;
+        padding: 16px 20px !important;
+        border-radius: 16px !important;
+        text-align: center !important;
+        display: block !important;
+        margin: 0 auto;
+    }
+    .title-card h2 {
+        font-size: 1.3rem !important;
+    }
+    .description-card h2 {
+        font-size: 0.95rem !important;
+    }
+    .stat-card p {
+        font-size: 1rem !important;
+    }
+    .cta-container {
+        margin-top: 8px;
+    }
+    /* Staggered entry transitions for static items */
+    .dissolve-layer[style*="opacity: 1"] .title-card,
+    .dissolve-layer[style*="opacity: 1"] .description-card,
+    .dissolve-layer[style*="opacity: 1"] .stat-card {
+        transform: translateY(0) scale(1) !important;
+        opacity: 1 !important;
+    }
+    .dissolve-layer[style*="opacity: 1"] .cta-container {
+        transform: translateY(0) scale(1) !important;
+        opacity: 1 !important;
+    }
+}

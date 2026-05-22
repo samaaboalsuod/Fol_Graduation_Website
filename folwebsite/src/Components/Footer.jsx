@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
 import './Footer.css';
@@ -20,7 +20,7 @@ const Footer = () => {
     return ( 
         <footer>
 
-            <div className='foorterTop'>
+            <div className='footerTop'>
                 <img className='footerLogo' src={logo} alt="logo" />
                 <div className='footerColumn'>
                     <h5>عن فل</h5>
@@ -58,13 +58,13 @@ const Footer = () => {
 
             <div className='footerBottom'>
 
-                <div className='footerBottRight'>
+                <div className='footerBottomRight'>
 
                 <div className='newsCont'>
                     <h5>اشترك في نشرتنا الأسبوعية لتصلك كل التحديثات</h5>
                     <div className='newsInputCont'>
                         <input type="text" placeholder='البريد الإلكتروني' />
-                        <button class="subscribe-btn">اشترك الآن</button>
+                        <button className="subscribe-btn">اشترك الآن</button>
                         
                     </div>
                 </div>
@@ -73,7 +73,7 @@ const Footer = () => {
                     <h5>تواصل مع فل</h5>
                     <p>+20 10236589809</p>
 
-                    <div className='socilaCont'>
+                    <div className='socialCont'>
                         {/* <img src="" alt="" /> */}
                         <FacebookLogo size={32} color="#fafaea" />
                         <InstagramLogo size={32} color="#fafaea" />
