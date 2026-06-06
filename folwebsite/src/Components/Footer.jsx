@@ -30,7 +30,9 @@ const Footer = () => {
                 </div>
 
                 <div className='footerColumn'>
-                    <h5>تسوق مشتلنا</h5>
+                    <a href="/Shop" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+                        <h5>تسوق مشتلنا</h5>
+                    </a>
                     <p>نباتات داخلية</p>
                     <p>نباتات خارجية</p>
                     <p>نباتات مثمرة</p>

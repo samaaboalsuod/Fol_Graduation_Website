@@ -1,0 +1,89 @@
+.shopCarouselWrapper {
+    position: relative;
+    width: 100%;
+    /* max-width: 1200px; */
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto 0;
+}
+
+.shopCarouselTrack {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shopCarouselSlide {
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Set pointer events to none so clicking edge cards doesn't interact, only center card */
+    pointer-events: none; 
+}
+
+.shopCarouselSlide.center {
+    z-index: 10;
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    pointer-events: auto; /* Enable clicks on the active center card */
+}
+
+.shopCarouselSlide.left {
+    z-index: 5;
+    transform: translateX(-350px) scale(0.85);
+    opacity: 0.4;
+}
+
+.shopCarouselSlide.right {
+    z-index: 5;
+    transform: translateX(350px) scale(0.85);
+    opacity: 0.4;
+}
+
+.shopCarouselBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    backdrop-filter: blur(5px);
+    transition: background 0.3s;
+}
+
+.shopCarouselBtn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.shopCarouselBtn.left-btn {
+    left: 5%;
+}
+
+.shopCarouselBtn.right-btn {
+    right: 5%;
+}
+
+@media (max-width: 1024px) {
+    .shopCarouselSlide.left { transform: translateX(-250px) scale(0.8); }
+    .shopCarouselSlide.right { transform: translateX(250px) scale(0.8); }
+    .shopCarouselBtn.left-btn { left: 0%; }
+    .shopCarouselBtn.right-btn { right: 0%; }
+}
+
+@media (max-width: 768px) {
+    .shopCarouselWrapper { height: 500px; }
+    .shopCarouselSlide.left { transform: translateX(-150px) scale(0.7); opacity: 0; }
+    .shopCarouselSlide.right { transform: translateX(150px) scale(0.7); opacity: 0; }
+}

@@ -1,0 +1,149 @@
+.shopCardCont {
+    position: relative;
+    width: 320px;
+    height: 440px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    margin-top: 100px; /* Space for the overflowing image */
+    direction: rtl;
+    transition: all 0.4s ease;
+}
+
+.shopCardImg {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    max-height: 350px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 20px rgba(0,0,0,0.4));
+    z-index: 5;
+    transition: transform 0.4s ease;
+}
+
+.shopCardImg3D {
+    position: absolute;
+    bottom: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    height: 350px;
+    z-index: 5;
+    transition: transform 0.4s ease;
+}
+
+.shopCardRank {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-family: var(--arabicFont);
+    color: var(--lightText, #FAFAEA);
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 20;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.shopCardCont:hover .shopCardImg,
+.shopCardCont:hover .shopCardImg3D {
+    transform: translateX(-50%) translateY(-10px) scale(1.05);
+}
+
+.shopCardDetails {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.shopCardCategory {
+    font-family: var(--arabicFont);
+    color: rgba(250, 250, 234, 0.7);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.shopCardNameRow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.shopCardName {
+    font-family: var(--arabicFont);
+    color: var(--lightText, #FAFAEA);
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.shopCardPrice {
+    font-family: var(--arabicFont);
+    color: rgba(250, 250, 234, 0.9);
+    font-size: 1rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+}
+
+.shopCardPrice span {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--lightText, #FAFAEA);
+}
+
+.shopCardActions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+
+
+.shopCardSaveBtn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(250, 250, 234, 0.4);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.shopCardSaveBtn:hover {
+    border-color: #FAFAEA;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .shopCardCont {
+        width: 280px;
+        height: 420px;
+    }
+    .shopCardImg {
+        top: -90px;
+    }
+    .shopCardName {
+        font-size: 2rem;
+    }
+}

@@ -12,7 +12,7 @@ const Menu = ({ closeMenu }) => {
   const menuItems = [
     { title: "عن فل", link: "#" },
     { title: "تواصل مع فل", link: "/Contact" },
-    { title: "تسوق مشتلنا", link: "#" },
+    { title: "تسوق مشتلنا", link: "/Shop" },
     { title: "الوظائف", link: "#" },
     { 
       title: "خدماتنا", 

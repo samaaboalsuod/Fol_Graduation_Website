@@ -79,6 +79,11 @@
     z-index: 20;
 }
 
+.shopBestSellerSec {
+    padding-top: 1rem !important; 
+    margin-top: -10vh !important; /* Pull up closer to the hero */
+}
+
 @media (max-width: 768px) {
     .pageContent {
         padding-top: 10vh;
