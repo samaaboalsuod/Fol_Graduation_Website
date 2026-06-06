@@ -7,6 +7,7 @@ import Questions from './Pages/Questions';
 import Contact from './Pages/Contact';
 import Asking from './Pages/Asking';
 import ServiceDetail from './Pages/ServiceDetail';
+import Shop from './Pages/Shop';
 
 
 const RoutingApp = () => {
@@ -23,6 +24,7 @@ const RoutingApp = () => {
                 <Route path='/Contact' element={<Contact />} />
                 <Route path='/Asking' element={<Asking />} />
                 <Route path='/ServiceDetail/:id' element={<ServiceDetail />} />
+                <Route path='/Shop' element={<Shop />} />
 
 
             </Routes>

@@ -1,0 +1,90 @@
+/* Nav Positioning */
+.navOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+/* Fixed/Absolute Hero Background */
+.heroBgLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120vh; /* Extended height to overlap next section */
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bgImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+    mix-blend-mode: soft-light;
+    /* Mask the image so it's gone long before the 120vh edge */
+    mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 90%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 90%);
+}
+
+.greenOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient that fades to transparent at the bottom to let page background through */
+    background: linear-gradient(to bottom, transparent 0%, rgba(8, 47, 25, 0.6) 40%, transparent 95%);
+}
+
+.blurLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(60px);
+    /* Blur mask also fades out to transparent at the bottom */
+    mask-image: linear-gradient(to bottom, transparent 0%, black 40%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%, transparent 95%);
+    z-index: 2;
+}
+
+/* Content Container */
+.pageContent {
+    position: relative;
+    z-index: 10;
+    padding-top: 15vh; /* Space for Nav */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.heroTitleCont {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+/* Overlapping Content Section */
+.shopContentSec {
+    width: 100%;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -5vh; /* Overlay hero slightly */
+    z-index: 20;
+}
+
+@media (max-width: 768px) {
+    .pageContent {
+        padding-top: 10vh;
+    }
+    
+    .heroBgLayer {
+        height: 120vh; /* Allow more space on mobile */
+    }
+}
