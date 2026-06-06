@@ -1,5 +1,7 @@
 import React from 'react';
 import './InviteOverlay.css';
+import MainButton from './MainButton';
+import SecondButton from './SecondButton';
 
 const InviteModal = ({ post, onClose }) => {
     return (
@@ -22,12 +24,14 @@ const InviteModal = ({ post, onClose }) => {
                         </p>
                         
                         <div className="modal-actions">
-                            <button className="btn-get-plant" onClick={() => console.log("Link to e-commerce")}>
-                                ابدأ رحلتك الآن
-                            </button>
-                            <button className="btn-close-secondary" onClick={onClose}>
-                                سأستمر في الاستكشاف أولاً
-                            </button>
+                            <MainButton 
+                                text="ابدأ رحلتك الآن" 
+                                onClick={() => console.log("Link to e-commerce")} 
+                            />
+                            <SecondButton 
+                                text="سأستمر في الاستكشاف أولاً" 
+                                onClick={onClose} 
+                            />
                         </div>
                     </div>
                 </div>
