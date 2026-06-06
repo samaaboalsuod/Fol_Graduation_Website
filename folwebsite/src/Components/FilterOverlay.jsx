@@ -10,13 +10,13 @@ const FilterOverlay = ({ onClose }) => {
         setOpenTabs(prev => ({ ...prev, [tab]: !prev[tab] }));
     };
 
-    // Placeholder data - replace with actual DB values when provided
+    // Plant categories extracted from DB schema
     const plantCategories = [
-        { id: 'light', name: 'الإضاءة', options: ['خافتة', 'متوسطة', 'ساطعة', 'مباشرة', 'غير مباشرة'] },
-        { id: 'care', name: 'العناية', options: ['سهلة جداً', 'سهلة', 'متوسطة', 'للمحترفين'] },
-        { id: 'space', name: 'المساحة', options: ['صغيرة', 'متوسطة', 'كبيرة', 'مكتبية'] },
-        { id: 'safety', name: 'الأمان', options: ['آمنة للحيوانات الأليفة', 'آمنة للأطفال', 'سامة'] },
-        { id: 'goal', name: 'الهدف', options: ['تنقية الهواء', 'زينة', 'رائحة عطرة', 'هدايا'] },
+        { id: 'category', name: 'الفئة', options: ['عشبي', 'صباريات', 'نباتات داخلية', 'نباتات منزلية', 'نباتات زينة', 'شجيرات'] },
+        { id: 'care', name: 'العناية', options: ['سهل', 'متوسط', 'صعب'] },
+        { id: 'light', name: 'الإضاءة', options: ['مباشر', 'غير مباشر'] },
+        { id: 'water', name: 'الري', options: ['أسبوعي', 'كل أسبوعين'] },
+        { id: 'features', name: 'ميزات إضافية', options: ['نبات نادر', 'آمن للحيوانات', 'منقي للهواء'] },
     ];
 
     const accessoriesCategories = [

@@ -5,6 +5,7 @@ import PageTitle from '../Components/PageTitle';
 import SectionTitles from '../Components/SectionTitles';
 import ShopCarousel from '../Components/ShopCarousel';
 import ShopFilterBar from '../Components/ShopFilterBar';
+import ShopCard from '../Components/ShopCard';
 import FilterOverlay from '../Components/FilterOverlay';
 import Footer from '../Components/Footer.jsx';
 
@@ -14,6 +15,7 @@ import './Shop.css';
 const Shop = () => {
     const [titleData, setTitleData] = useState(null);
     const [bestSellers, setBestSellers] = useState([]);
+    const [allPlants, setAllPlants] = useState([]);
     const [isFilterOpen, setIsFilterOpen] = useState(false);
 
     useEffect(() => {
@@ -67,6 +69,16 @@ const Shop = () => {
                 
                 setBestSellers(arranged);
             }
+
+            // Fetch all plants for the grid
+            const { data: allPlantsData, error: allPlantsError } = await supabase
+                .from('Plant')
+                .select('*');
+
+            if (allPlantsError) console.error(allPlantsError);
+            if (allPlantsData) {
+                setAllPlants(allPlantsData);
+            }
         };
 
         fetchData();
@@ -107,6 +119,12 @@ const Shop = () => {
                 {/* Main Product List Grid Section */}
                 <section className="generalSec shopProductGridSec">
                     <ShopFilterBar onOpenFilters={() => setIsFilterOpen(true)} />
+                    
+                    <div className="shopProductGrid">
+                        {allPlants.map(plant => (
+                            <ShopCard key={plant.id} plant={plant} />
+                        ))}
+                    </div>
                 </section>
             </div>
 
