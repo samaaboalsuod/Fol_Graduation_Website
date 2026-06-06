@@ -4,6 +4,8 @@ import Nav from '../Components/Nav';
 import PageTitle from '../Components/PageTitle';
 import SectionTitles from '../Components/SectionTitles';
 import ShopCarousel from '../Components/ShopCarousel';
+import ShopFilterBar from '../Components/ShopFilterBar';
+import FilterOverlay from '../Components/FilterOverlay';
 import Footer from '../Components/Footer.jsx';
 
 import shopBg from '../Assets/Icons/shopBg.png';
@@ -12,6 +14,7 @@ import './Shop.css';
 const Shop = () => {
     const [titleData, setTitleData] = useState(null);
     const [bestSellers, setBestSellers] = useState([]);
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -100,7 +103,14 @@ const Shop = () => {
                         <ShopCarousel plants={bestSellers} />
                     )}
                 </section>
+
+                {/* Main Product List Grid Section */}
+                <section className="generalSec shopProductGridSec">
+                    <ShopFilterBar onOpenFilters={() => setIsFilterOpen(true)} />
+                </section>
             </div>
+
+            {isFilterOpen && <FilterOverlay onClose={() => setIsFilterOpen(false)} />}
 
             <Footer />
         </>

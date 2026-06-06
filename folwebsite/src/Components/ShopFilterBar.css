@@ -1,0 +1,34 @@
+.shopFilterBar {
+    width: 90%;
+    /* max-width: 1200px; */
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.shopFilterBar-filters {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.shopFilterBar-categories {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .shopFilterBar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+    
+    .shopFilterBar-categories {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
