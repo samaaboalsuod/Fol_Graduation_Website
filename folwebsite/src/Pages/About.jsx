@@ -5,6 +5,7 @@ import Footer from '../Components/Footer';
 import PageTitle from '../Components/PageTitle';
 import AboutJourney from './AboutJourney';
 import AboutTimeline from './AboutTimeline';
+import AboutValues from './AboutValues';
 
 import './About.css';
 
@@ -77,6 +78,7 @@ const About = () => {
 
             <AboutJourney />
             <AboutTimeline />
+            <AboutValues />
 
             <div className="aboutFooterWrapper">
                 <Footer />
