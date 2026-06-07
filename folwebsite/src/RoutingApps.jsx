@@ -8,6 +8,7 @@ import Contact from './Pages/Contact';
 import Asking from './Pages/Asking';
 import ServiceDetail from './Pages/ServiceDetail';
 import Shop from './Pages/Shop';
+import Suggestions from './Pages/Suggestions';
 
 
 const RoutingApp = () => {
@@ -25,6 +26,7 @@ const RoutingApp = () => {
                 <Route path='/Asking' element={<Asking />} />
                 <Route path='/ServiceDetail/:id' element={<ServiceDetail />} />
                 <Route path='/Shop' element={<Shop />} />
+                <Route path='/Suggestions' element={<Suggestions />} />
 
 
             </Routes>

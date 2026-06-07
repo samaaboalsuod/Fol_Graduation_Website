@@ -5,7 +5,45 @@ import OnboardingProgressBar from '../Components/OnboardingProgressBar';
 import OnboardingCard from '../Components/OnboardingCard';
 import SecondButton from '../Components/SecondButton';
 import logo from '../Assets/Icons/logo.svg';
+import { supabase } from '../Supabase';
 import './Questions.css';
+
+export const getQuizSuggestions = async (userAnswers) => {
+  // Extract user selection ids from state mapping
+  const { 
+    lighting,     // e.g., 'medium_indirect'
+    placement,    // e.g., 'small_surface'
+    maintenance,  // e.g., 'low_maintenance'
+    experience,   // e.g., 'beginner'
+    objective,    // e.g., 'air_purifying'
+    pets          // e.g., 'pet_friendly_required'
+  } = userAnswers;
+
+  // Transform client options to database text records
+  const dbLighting = lighting === 'high_direct' ? 'مباشر' : 'غير مباشر';
+  const dbDifficulty = experience === 'beginner' ? 'سهل' : experience === 'intermediate' ? 'متوسط' : 'صعب';
+  const dbWatering = maintenance === 'low_maintenance' ? 'كل أسبوعين' : 'أسبوعي';
+  const isPetSafeRequired = pets === 'pet_friendly_required';
+  const isAirPurifyingRequired = objective === 'air_purifying';
+
+  // Call the custom dynamic database algorithm
+  const { data: suggestions, error } = await supabase
+    .rpc('get_onboarding_plant_matches', {
+      p_lighting: dbLighting,
+      p_difficulty: dbDifficulty,
+      p_watering: dbWatering,
+      p_petsafe: isPetSafeRequired,
+      p_airpurifying: isAirPurifyingRequired,
+      p_placement: placement
+    });
+
+  if (error) {
+    console.error("Quiz matching failure:", error);
+    return [];
+  }
+
+  return suggestions; // Returns the exact top 3 most convenient plants
+};
 
 const Questions = () => {
     const navigate = useNavigate();
@@ -72,12 +110,22 @@ const Questions = () => {
         setSelections({ ...selections, [currentStep]: optionId });
     };
 
-    const nextStep = () => {
+    const nextStep = async () => {
         if (currentStep < steps.length - 1) {
             setCurrentStep(currentStep + 1);
         } else {
             console.log('Quiz complete:', selections);
-            // navigate('/Results'); 
+            const userAnswers = {
+                lighting: selections[0],
+                placement: selections[1],
+                maintenance: selections[2],
+                experience: selections[3],
+                objective: selections[4],
+                pets: selections[5]
+            };
+            const suggestions = await getQuizSuggestions(userAnswers);
+            console.log('Suggestions:', suggestions);
+            navigate('/Suggestions', { state: { suggestions, userAnswers } }); 
         }
     };
 

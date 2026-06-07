@@ -1,0 +1,338 @@
+.plantMatchCard {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    color: #fff;
+    font-family: 'Tajawal', sans-serif;
+    margin-bottom: 20px;
+}
+
+.perfectMatch {
+    width: 100%;
+}
+
+.goodMatch {
+    width: 48%;
+}
+
+/* ================= PERFECT MATCH LAYOUT ================= */
+.pmcPerfectContainer {
+    display: flex;
+    justify-content: space-between;
+    min-height: 500px;
+}
+
+.pmcRightCol {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pmcCenterCol {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.pmcLeftCol {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* Common Text */
+.pmcCategory {
+    font-size: 0.9rem;
+    color: #a4bba8;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.pmcTitle {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 0 0 5px 0;
+}
+
+.pmcCommonName {
+    font-size: 0.9rem;
+    color: #a4bba8;
+    margin-bottom: 15px;
+}
+
+.pmcDescription {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e9f0ea;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.pmcPricePerfect {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 10px;
+}
+
+/* Top Actions */
+.pmcTopActions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.pmcIconBtn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pmcIconBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Badges */
+.badgePerfect {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: #D4AF37;
+    color: #fff;
+    box-shadow: 0 0 60px rgba(212, 175, 55, 0.8);
+    margin-bottom: 30px;
+    position: relative;
+    right: 20px; /* Slight offset outside */
+    top: -10px;
+}
+
+/* Gallery */
+.pmcGallery {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.galleryImg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.1);
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* AR Box */
+.pmcArLinkBox {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.arBoxText h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.arBoxText p {
+    font-size: 0.8rem;
+    color: #a4bba8;
+    max-width: 180px;
+}
+
+.arBoxQr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qrCodeImg {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 5px;
+}
+
+.arBoxQr span {
+    font-size: 0.7rem;
+    color: #fff;
+}
+
+/* Buttons */
+.pmcFooterButtons {
+    display: flex;
+    gap: 15px;
+}
+
+.pmcPrimaryBtn {
+    background: #fff;
+    color: #082F19;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.pmcSecondaryBtn {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pmcPrimaryBtn:hover, .pmcSecondaryBtn:hover {
+    transform: scale(1.05);
+}
+
+/* Models */
+.pmcModelViewer {
+    width: 100%;
+    height: 500px;
+    --poster-color: transparent;
+}
+
+
+/* ================= GOOD MATCH LAYOUT ================= */
+.pmcGoodContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 450px;
+}
+
+.pmcGoodHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.badgeGood {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+    background-color: #4a6b52;
+    color: #fff;
+    box-shadow: 0 0 40px rgba(74, 107, 82, 0.6);
+}
+
+.pmcGoodText {
+    margin-top: -30px;
+}
+
+.pmcGoodText .pmcTitle {
+    font-size: 2rem;
+}
+
+.pmcGoodDesc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #e9f0ea;
+    font-weight: 300;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pmcGoodModel {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pmcGoodModel .pmcModelViewer {
+    width: 100%;
+    height: 300px;
+}
+
+.pmcGoodFooter {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pmcPriceGood {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* ================= MEDIA QUERIES ================= */
+@media (max-width: 992px) {
+    .pmcPerfectContainer {
+        flex-direction: column;
+    }
+    .pmcRightCol, .pmcCenterCol, .pmcLeftCol {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+    .pmcRightCol {
+        order: 2;
+    }
+    .pmcCenterCol {
+        order: 1;
+        margin-bottom: 30px;
+    }
+    .pmcLeftCol {
+        order: 3;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 30px;
+    }
+    .badgePerfect {
+        right: 0;
+        top: 0;
+        margin-bottom: 0;
+    }
+    .pmcGallery {
+        flex-direction: row;
+    }
+    .goodMatch {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
