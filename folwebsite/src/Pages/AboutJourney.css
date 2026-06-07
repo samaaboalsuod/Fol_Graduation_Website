@@ -1,0 +1,75 @@
+.journeyContainer {
+
+    padding: 6rem 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.journeyBlock {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    min-height: 45vh; /* Greatly reduced to bring sections closer */
+    padding: 0 5%;
+    margin-bottom: 4rem; /* Adds a bit of controlled spacing instead of huge gaps */
+}
+
+/* STAGE 1: Card Right, Plant Left (RTL means flex-start puts the first child on the Right) */
+.journeyBlock.block1 {
+    justify-content: flex-start;
+}
+.plant1 {
+    position: absolute;
+    left: -5%;
+    height: 80vh; /* Scaled down slightly to fit tighter layout */
+    object-fit: contain;
+    z-index: 1;
+}
+
+/* STAGE 2: Card Left, Plant Right (RTL means flex-end puts Card on Left) */
+.journeyBlock.block2 {
+    justify-content: flex-end;
+}
+.plant2 {
+    position: absolute;
+    right: -2%;
+    height: 65vh;
+    object-fit: contain;
+    z-index: 1;
+}
+
+/* STAGE 3: Card Center Top, Plant Bottom Center */
+.journeyBlock.block3 {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0; /* Removed gap for overlap */
+    min-height: 55vh;
+}
+.plant3 {
+    height: 65vh;
+    object-fit: contain;
+    z-index: 1;
+    margin-top: -52vh; /* Pulls the plant up to create a nice overlap with the card */
+    margin-right: 55%; /* Pushes the plant to the physical left of the card */
+}
+
+@media (max-width: 992px) {
+    .journeyBlock {
+        flex-direction: column;
+        justify-content: center !important;
+        gap: 50px;
+        min-height: auto;
+        padding: 50px 5%;
+    }
+    
+    .journeyPlant {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        height: 60vh !important;
+    }
+}

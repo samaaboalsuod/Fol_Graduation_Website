@@ -3,6 +3,7 @@ import { supabase } from '../Supabase.jsx';
 import Nav from '../Components/Nav';
 import Footer from '../Components/Footer';
 import PageTitle from '../Components/PageTitle';
+import AboutJourney from './AboutJourney';
 
 import './About.css';
 
@@ -72,6 +73,8 @@ const About = () => {
                 {/* Decorative Leaf */}
                 <img src={decorLeaf} alt="" className="aboutDecoLeaf" />
             </div>
+
+            <AboutJourney />
 
             <div className="aboutFooterWrapper">
                 <Footer />

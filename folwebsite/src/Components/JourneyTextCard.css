@@ -1,0 +1,46 @@
+.journeyCard {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 2rem;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 2px 20px rgba(255, 255, 255, 0.05);
+    color: #fff;
+    width: 450px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.journeyCard h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+    color: #f4f6f3;
+}
+
+.journeyCard p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+    color: #cce3b2; /* Light green-ish text to match Fol brand */
+}
+
+@media (max-width: 768px) {
+    .journeyCard {
+        padding: 30px;
+        border-radius: 40px;
+        width: 90vw;
+    }
+    
+    .journeyCard h2 {
+        font-size: 2rem;
+    }
+    
+    .journeyCard p {
+        font-size: 1rem;
+    }
+}
