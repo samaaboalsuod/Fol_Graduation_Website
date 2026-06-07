@@ -5,6 +5,7 @@ import Nav from '../Components/Nav';
 import PageTitle from '../Components/PageTitle';
 import PlantMatchCard from '../Components/PlantMatchCard';
 import Footer from '../Components/Footer';
+import GlassyCTA from '../Components/GlassyCTA';
 import { Sun, House, Clock, GraduationCap } from "@phosphor-icons/react";
 
 import heroBg from '../Assets/Icons/heroBg.png';
@@ -134,6 +135,14 @@ const Suggestions = () => {
                         ))}
                     </div>
                 </div>
+                
+                <GlassyCTA 
+                    title="لست متأكداً بعد؟ لا مشكلة، هذه الاقتراحات ستكون محفوظة دائماً. يمكنك تصفح المشتل كاملاً أو تعديل إجاباتك للحصول على نتائج مختلفة."
+                    mainBtnText="تصفح الموقع كالمشتل"
+                    mainBtnAction={() => navigate('/Home')}
+                    secondBtnText="عدل إجاباتك"
+                    secondBtnAction={() => navigate('/Questions')}
+                />
             </div>
             <Footer />
         </div>
