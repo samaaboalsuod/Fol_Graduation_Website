@@ -1,0 +1,179 @@
+.aboutPage {
+    position: relative;
+    min-height: 100vh;
+    background-color: #082F19; /* Standard dark green background */
+    font-family: 'Tajawal', sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+
+/* Content Container */
+.aboutContent {
+    position: relative;
+    z-index: 10;
+    padding-top: 100px; /* Reduced from 15vh */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; /* Ensure everything fits in 100vh */
+    justify-content: center;
+}
+
+.aboutHeroTitle {
+    width: 100%;
+    margin-bottom: 1rem; /* Reduced gap between text and logo */
+}
+
+/* Central Logo Section */
+.aboutLogoSection {
+    position: relative;
+    width: 100%;
+    max-width: 1100px; /* Keeps bubbles perfectly spaced on large screens */
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Centers the bounded section */
+    margin-top: -30px; /* Pulls logo closer to the text */
+}
+
+.aboutMainLogo {
+    width: 280px; /* Reduced to match the second photo */
+    z-index: 5;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+    animation: pulseGlow 4s infinite alternate;
+}
+
+/* Floating Animation */
+@keyframes floatGentle {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulseGlow {
+    0% { filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3)); }
+    100% { filter: drop-shadow(0 10px 40px rgba(255,255,255,0.1)); }
+}
+
+/* Common Bubble Styles */
+.aboutBubble {
+    position: absolute;
+    box-sizing: border-box; /* Fixes the padding adding extra width that caused overlap */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 30px;
+    width: 160px;
+    height: 160px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.aboutBubble h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 5px 0;
+}
+
+.aboutBubble p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: #cce3b2;
+}
+
+/* Specific Bubble Placements and Shapes */
+/* Bubble 1: Left Middle (95%) */
+.bubbleLeft {
+    top: 30%;
+    left: 5%; /* Nice space on the left */
+    transform: translateY(-50%); /* Perfectly centered vertically */
+    border-radius: 100px 100px 0 100px; /* Sharp bottom-right */
+    animation: floatGentle 5s infinite ease-in-out;
+}
+
+/* Bubble 2: Top Right (+1500) */
+.bubbleTopRight {
+    top: -2%;
+    right: 5%; /* Nice space on the right */
+    border-radius: 100px 100px 100px 0; /* Sharp bottom-left */
+    animation: floatGentle 6s infinite ease-in-out;
+    animation-delay: 1s;
+}
+
+/* Bubble 3: Bottom Right (+200) */
+.bubbleBottomRight {
+    bottom: 2%;
+    right: 12%; /* Slightly tucked under top-right bubble */
+    border-radius: 0 100px 100px 100px; /* Sharp top-left */
+    animation: floatGentle 5.5s infinite ease-in-out;
+    animation-delay: 2s;
+}
+
+/* Decorative leaf */
+.aboutDecoLeaf {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 200px; /* Reduced to match the second photo */
+    opacity: 0.8;
+    z-index: 15;
+    pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .aboutContent {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 120px;
+        padding-bottom: 50px;
+        justify-content: flex-start;
+    }
+
+    .aboutLogoSection {
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 30px;
+        justify-items: center;
+        padding: 20px;
+    }
+
+    .aboutMainLogo {
+        grid-column: 1 / -1; /* Make logo take full width of grid */
+        order: -1; /* Put logo first */
+        width: 220px;
+        margin-bottom: 30px;
+        margin-top: 20px;
+    }
+
+    .aboutBubble {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 140px;
+        height: 140px;
+        margin: 0;
+    }
+
+    .bubbleLeft, .bubbleTopRight, .bubbleBottomRight {
+        /* Keep their unique shapes or reset if desired. Keeping shapes looks cool! */
+    }
+}
+
+.aboutFooterWrapper {
+    background-color: #082F19; /* Dark green for Footer */
+    width: 100%;
+    position: relative;
+    z-index: 50;
+}

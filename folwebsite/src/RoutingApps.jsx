@@ -10,6 +10,7 @@ import ServiceDetail from './Pages/ServiceDetail';
 import Shop from './Pages/Shop';
 import Suggestions from './Pages/Suggestions';
 import PlantDetail from './Pages/PlantDetail';
+import About from './Pages/About';
 
 
 const RoutingApp = () => {
@@ -29,6 +30,7 @@ const RoutingApp = () => {
                 <Route path='/Shop' element={<Shop />} />
                 <Route path='/Suggestions' element={<Suggestions />} />
                 <Route path='/Plant/:id' element={<PlantDetail />} />
+                <Route path='/About' element={<About />} />
 
 
             </Routes>

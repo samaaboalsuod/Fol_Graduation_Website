@@ -10,7 +10,7 @@ const Menu = ({ closeMenu }) => {
   const navigate = useNavigate();
   
   const menuItems = [
-    { title: "عن فل", link: "#" },
+    { title: "عن فل", link: "/About" },
     { title: "تواصل مع فل", link: "/Contact" },
     { title: "تسوق مشتلنا", link: "/Shop" },
     { title: "الوظائف", link: "#" },

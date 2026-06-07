@@ -23,7 +23,9 @@ const Footer = () => {
             <div className='footerTop'>
                 <img className='footerLogo' src={logo} alt="logo" />
                 <div className='footerColumn'>
-                    <h5>عن فل</h5>
+                    <a href="/About" style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+                        <h5>عن فل</h5>
+                    </a>
                     <p>كيف بدأنا</p>
                     <p>رسالة فل</p>
                     <p>أيادينا المصرية</p>
