@@ -1,0 +1,380 @@
+.plantDetailPage {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #F5F1E1 0%, #EFEBD8 50%, #DFD9BF 100%); /* Added subtle gradient for depth */
+    font-family: 'Tajawal', sans-serif;
+    color: #2F4F3D;
+    min-height: 100vh;
+}
+
+/* Make nav and footer dark to make white text visible */
+.pdNavWrapper {
+    background-color: #082F19;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+}
+
+.pdFooterWrapper {
+    background-color: #082F19;
+    width: 100%;
+}
+
+.horizontalScrollContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for a cleaner look */
+.horizontalScrollContainer::-webkit-scrollbar {
+    height: 8px;
+}
+.horizontalScrollContainer::-webkit-scrollbar-track {
+    background: transparent;
+}
+.horizontalScrollContainer::-webkit-scrollbar-thumb {
+    background: rgba(47, 79, 61, 0.2);
+    border-radius: 4px;
+}
+
+.scrollScreen {
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* ================= SCREEN 1: Overview ================= */
+.screenOverview {
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.overviewRight {
+    width: 50%;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.pdTextTop {
+    margin-bottom: 40px;
+}
+
+.pdCategory {
+    font-size: 1rem;
+    color: #4a6b52;
+    margin-bottom: 5px;
+}
+
+.pdTitleRow {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+
+.pdTitle {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #082F19; /* Make the big plant name dark green */
+    margin: 0;
+}
+
+.pdPrice {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.pdCommonName {
+    font-size: 1rem;
+    color: #4a6b52;
+}
+
+.pdSizeSection {
+    margin-bottom: 40px;
+}
+
+.pdSizeTitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.pdSizeRow {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.pdSizeOption {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 1px solid #4a6b52;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: #2F4F3D;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pdSizeOption.selected {
+    background-color: #1a4d2e;
+    color: #fff;
+    border-color: #1a4d2e;
+}
+
+.pdHeights {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.pdHeights span {
+    font-weight: 700;
+}
+
+.pdIdealBadge {
+    position: absolute;
+    bottom: 50px;
+    left: 50px; /* Placing it near the center divider */
+    background: #cce3b2;
+    color: #082F19;
+    padding: 20px;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: rotate(-10deg); /* Slight tilt for design */
+    border: 3px dashed rgba(8, 47, 25, 0.2); /* Adding the dashed border look */
+}
+
+.pdIdealBadge span {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 2px;
+}
+
+.pdDecoLeafRight {
+    position: absolute;
+    bottom: -20px;
+    right: -20px; /* Placing it on the far right edge */
+    width: 250px;
+    opacity: 0.8;
+    transform: rotate(15deg);
+}
+
+.overviewLeft {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    border-right: 2px solid rgba(8, 47, 25, 0.1); /* Subtle divider */
+}
+
+.overviewPhotoFull {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This makes the image fill the entire left side completely */
+}
+
+.pdAddCartBtnLeft {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #082F19;
+    color: #fff;
+    border: none;
+    padding: 15px 50px;
+    border-radius: 30px;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+.pdAddCartBtnLeft:hover {
+    transform: translateX(-50%) scale(1.05);
+    background: #114a2a;
+}
+
+/* ================= SCREEN 2: Care ================= */
+.screenCare {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.careCenterText {
+    font-size: 3rem; /* Making it a bit bigger too */
+    font-weight: 800;
+    color: #082F19; /* Dark green as requested */
+    position: absolute;
+    z-index: 10;
+}
+
+.careGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 200px 300px; /* Space out the 4 blocks around the center text */
+    position: relative;
+    z-index: 5;
+}
+
+.careDecoTopLeft {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 250px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.careDecoBottomRight {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    width: 250px;
+    border-radius: 100px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.careDecoHanging {
+    position: absolute;
+    top: 0;
+    right: 25%;
+    width: 200px;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1));
+}
+
+
+/* ================= SCREEN 3: AR View ================= */
+.screenAR {
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+.arLeft {
+    width: 55%; /* Increased from 45% */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pdModelViewer {
+    width: 100%;
+    height: 80vh; /* Increased from 65vh */
+    min-height: 600px; /* Increased from 500px */
+    --poster-color: transparent;
+}
+
+.arInstruction {
+    margin-top: -20px;
+    color: #4a6b52;
+    font-weight: 700;
+}
+
+.arRight {
+    width: 35%;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 50px 40px; /* Added more padding to make the card bigger too */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.arRight h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.arRight p {
+    font-size: 0.9rem;
+    color: #4a6b52;
+    margin-bottom: 30px;
+}
+
+.pdQrCode {
+    width: 180px; /* Made the QR code slightly larger */
+    height: 180px;
+    margin-bottom: 15px;
+}
+
+.arRight span {
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.decoLeavesRight {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .careGrid {
+        gap: 100px 150px;
+    }
+}
+
+@media (max-width: 992px) {
+    .horizontalScrollContainer {
+        overflow-x: hidden;
+        overflow-y: auto;
+        flex-direction: column;
+        scroll-snap-type: y mandatory;
+    }
+    
+    .scrollScreen {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .overviewLeft, .overviewRight, .arLeft, .arRight {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .careGrid {
+        gap: 20px;
+    }
+    
+    .careDecoTopLeft, .careDecoBottomRight, .careDecoHanging {
+        display: none;
+    }
+}

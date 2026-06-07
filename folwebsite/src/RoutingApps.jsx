@@ -9,6 +9,7 @@ import Asking from './Pages/Asking';
 import ServiceDetail from './Pages/ServiceDetail';
 import Shop from './Pages/Shop';
 import Suggestions from './Pages/Suggestions';
+import PlantDetail from './Pages/PlantDetail';
 
 
 const RoutingApp = () => {
@@ -27,6 +28,7 @@ const RoutingApp = () => {
                 <Route path='/ServiceDetail/:id' element={<ServiceDetail />} />
                 <Route path='/Shop' element={<Shop />} />
                 <Route path='/Suggestions' element={<Suggestions />} />
+                <Route path='/Plant/:id' element={<PlantDetail />} />
 
 
             </Routes>
