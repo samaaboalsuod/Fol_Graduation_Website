@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthContext';
+import { ShoppingCartSimple, UserCircle } from '@phosphor-icons/react';
 import './Menu.css';
 
 import search from '../Assets/Icons/search.svg'; 
@@ -8,6 +10,7 @@ import close from '../Assets/Icons/x.svg';
 
 const Menu = ({ closeMenu }) => {
   const navigate = useNavigate();
+  const { user, requireAuth } = useAuth();
   
   const menuItems = [
     { title: "عن فل", link: "/About" },
@@ -26,6 +29,7 @@ const Menu = ({ closeMenu }) => {
       ]
     },
     { title: "اسأل خبيرًا", link: "/Asking#ask-expert" },
+    { title: "محفوظاتي", link: "/Save", isProtected: true },
     { title: "الاستدامة", link: "#" },
     { title: "تطبيق فل", link: "#" }
   ];
@@ -38,8 +42,22 @@ const Menu = ({ closeMenu }) => {
   return (
     <div className="menu-overlay">
       <div className="menu-header">
-        <button> <img src={search} alt="" /> </button>
-        <button onClick={closeMenu}> <img src={close} alt="" /> </button>
+        <div className="menu-header-utils">
+          <div className="menu-util-icon" onClick={() => requireAuth(() => console.log('Profile'))}>
+            {user?.Photo ? (
+              <img src={user.Photo} alt="Profile" className="menu-avatar" />
+            ) : (
+              <UserCircle size="24" color="#082F19" weight="thin" />
+            )}
+          </div>
+          <div className="menu-util-icon" onClick={() => requireAuth(() => console.log('Cart'))}>
+            <ShoppingCartSimple size="24" color="#082F19" weight="thin" />
+          </div>
+        </div>
+        <div className="menu-header-actions">
+           <button> <img src={search} alt="search" /> </button>
+           <button onClick={closeMenu}> <img src={close} alt="close" /> </button>
+        </div>
       </div>
 
       <ul className="menu-list">
@@ -57,7 +75,24 @@ const Menu = ({ closeMenu }) => {
                 </ul>
               </div>
             ) : (
-              <a href={item.link} onClick={closeMenu} className="menu-title">{item.title}</a>
+              <a 
+                href={item.isProtected ? "#" : item.link} 
+                onClick={(e) => {
+                  e.preventDefault();
+                  const action = () => {
+                    closeMenu();
+                    navigate(item.link);
+                  };
+                  if (item.isProtected) {
+                    requireAuth(action);
+                  } else {
+                    action();
+                  }
+                }} 
+                className="menu-title"
+              >
+                {item.title}
+              </a>
             )}
             <hr className="menu-divider" />
           </li>

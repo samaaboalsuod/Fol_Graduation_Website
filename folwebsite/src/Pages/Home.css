@@ -1,3 +1,21 @@
+:root {
+    --arabicFont: 'Tajawal', sans-serif;
+    --lightText: #FAFAEA;
+    --darkBg: #082F19;
+    --mainGreen: #177333;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+   direction: rtl;
+}
+
 button{
     all: unset;
 }

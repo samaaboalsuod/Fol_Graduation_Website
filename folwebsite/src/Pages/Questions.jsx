@@ -6,6 +6,7 @@ import OnboardingCard from '../Components/OnboardingCard';
 import SecondButton from '../Components/SecondButton';
 import logo from '../Assets/Icons/logo.svg';
 import { supabase } from '../Supabase';
+import { useAuth } from '../AuthContext';
 import './Questions.css';
 
 export const getQuizSuggestions = async (userAnswers) => {
@@ -47,6 +48,7 @@ export const getQuizSuggestions = async (userAnswers) => {
 
 const Questions = () => {
     const navigate = useNavigate();
+    const { user } = useAuth();
     const [currentStep, setCurrentStep] = useState(0);
     const [selections, setSelections] = useState({});
 
@@ -123,6 +125,20 @@ const Questions = () => {
                 objective: selections[4],
                 pets: selections[5]
             };
+            
+            // Save journey to database if user is logged in
+            if (user) {
+                await supabase.from('QuizJourney').insert([{
+                    user_id: user.id,
+                    lighting_selection: userAnswers.lighting,
+                    placement_selection: userAnswers.placement,
+                    maintenance_selection: userAnswers.maintenance,
+                    experience_selection: userAnswers.experience,
+                    objective_selection: userAnswers.objective,
+                    pets_selection: userAnswers.pets
+                }]);
+            }
+
             const suggestions = await getQuizSuggestions(userAnswers);
             console.log('Suggestions:', suggestions);
             navigate('/Suggestions', { state: { suggestions, userAnswers } }); 

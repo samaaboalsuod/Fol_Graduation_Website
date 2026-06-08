@@ -1,0 +1,94 @@
+.journeyHistoryCard {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4rem 10rem 4rem 10rem;
+    padding: 3rem 4rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 2px 10px rgba(255, 255, 255, 0.02);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.journeyHistoryCard:hover {
+    transform: translateY(-5px);
+}
+
+.journeyDate {
+    position: absolute;
+    top: 2.5rem;
+    left: 4rem; /* LTR mapped to RTL visually it might be left=end, right=start */
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.journeyHistoryCard[dir="rtl"] .journeyDate {
+    left: 4rem;
+    right: auto;
+}
+
+.journeyTitle {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.journeyGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.journeyDetailItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+}
+
+.journeyDetailIconText {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.journeyDetailLabel {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.journeyDetailDesc {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    padding-right: 2.8rem; /* align under text */
+}
+
+.journeyShowBtn {
+    align-self: center;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .journeyHistoryCard {
+        border-radius: 2rem;
+        padding: 2rem;
+    }
+    
+    .journeyGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .journeyDate {
+        position: relative;
+        top: 0;
+        left: 0;
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+}

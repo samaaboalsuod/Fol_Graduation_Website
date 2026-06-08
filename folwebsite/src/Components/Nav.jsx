@@ -1,5 +1,6 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../AuthContext';
+import { supabase } from '../Supabase';
 import './Nav.css';
 import Menu from './Menu';
 
@@ -9,8 +10,25 @@ import logo from '../Assets/Icons/logo.svg';
 import burger from '../Assets/Icons/burgerMenu.svg';
 
 const Nav = ({ hideWave }) => {
-
   const [isOpen, setIsOpen] = useState(false);
+  const { user, requireAuth } = useAuth();
+  const [savedCount, setSavedCount] = useState(0);
+
+  useEffect(() => {
+    if (user) {
+      const fetchSavedCount = async () => {
+        const { count } = await supabase
+          .from('SavedProduct')
+          .select('*', { count: 'exact', head: true })
+          .eq('user_id', user.id);
+        setSavedCount(count || 0);
+      };
+      fetchSavedCount();
+    } else {
+      setSavedCount(0);
+    }
+  }, [user]);
+
   // Mapping 5 flowers
   const flowers = [
     { id: 1, left: '8%', scale: 0.6, delay: '0.1s' },
@@ -41,16 +59,19 @@ const Nav = ({ hideWave }) => {
         </div>
       ))}
 
-      
       <header>
-        <img src={logo} alt="logo" />
-        <img 
-          src={burger} 
-          alt="menu" 
-          className="nav-item" 
-          onClick={() => setIsOpen(true)} 
-          style={{ cursor: 'pointer' }}
-        />
+        <img src={logo} alt="logo" className="nav-logo" />
+        
+        <div className="nav-actions-container">
+          {/* Burger Menu */}
+          <img 
+            src={burger} 
+            alt="menu" 
+            className="nav-item burger-icon" 
+            onClick={() => setIsOpen(true)} 
+            style={{ cursor: 'pointer' }}
+          />
+        </div>
       </header>
     </nav>
   );

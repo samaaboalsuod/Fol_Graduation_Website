@@ -1,6 +1,7 @@
 .shopCardCont {
     position: relative;
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     height: 440px;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
