@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../CartContext';
 import { useNavigate } from 'react-router-dom';
+import { supabase } from '../Supabase';
 import { CheckCircle, ArrowRight } from '@phosphor-icons/react';
 import Nav from '../Components/Nav';
 import Footer from '../Components/Footer';
@@ -28,13 +29,71 @@ const Checkout = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleCheckout = (e) => {
+    const handleCheckout = async (e) => {
         e.preventDefault();
-        // Visual simulation of checkout completion
-        setTimeout(() => {
+        
+        try {
+            // Fix for Postgres sequence out of sync: manually compute next Order ID
+            const { data: maxOrderData } = await supabase
+                .from('Orders')
+                .select('id')
+                .order('id', { ascending: false })
+                .limit(1)
+                .single();
+            const nextOrderId = (maxOrderData?.id || 0) + 1;
+
+            // 1. Insert into Orders table
+            const { data: order, error: orderError } = await supabase
+                .from('Orders')
+                .insert([{
+                    id: nextOrderId,
+                    Dilevery_Status: 'Pending',
+                    Customer_Name: formData.fullName,
+                    Address: `${formData.address}, ${formData.city}`,
+                    Phone: formData.phone,
+                    Shipping: shipping.toString(),
+                    Shipping_Status: 'Preparing for Shipment',
+                    is_redeemed: false
+                }])
+                .select()
+                .single();
+
+            if (orderError) throw orderError;
+
+            // Fix for Postgres sequence out of sync: manually compute next Order_Items ID
+            const { data: maxItemData } = await supabase
+                .from('Order_Items')
+                .select('id')
+                .order('id', { ascending: false })
+                .limit(1)
+                .single();
+            let nextItemId = (maxItemData?.id || 0) + 1;
+
+            // 2. Insert into Order_Items table
+            const orderItemsData = cartItems.map(item => ({
+                id: nextItemId++,
+                Order_id: order.id,
+                Quantity: '1',
+                Price: item.Price?.toString(),
+                Product_Name: item.NameAR,
+                Categoty: 'Plants',
+                Plant_Link_ID: item.id
+            }));
+
+            const { error: itemsError } = await supabase
+                .from('Order_Items')
+                .insert(orderItemsData);
+
+            if (itemsError) throw itemsError;
+
+            // 3. Show success and clear cart
             setIsSuccess(true);
             clearCart();
-        }, 800);
+            
+        } catch (error) {
+            console.error("Error creating order:", error);
+            alert(`حدث خطأ: ${error.message || JSON.stringify(error)}`);
+        }
     };
 
     if (isSuccess) {
