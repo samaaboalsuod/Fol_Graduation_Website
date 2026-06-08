@@ -4,6 +4,7 @@ import { BookmarkSimple } from '@phosphor-icons/react';
 import { Canvas } from '@react-three/fiber';
 import { useGLTF, Environment, OrbitControls } from '@react-three/drei';
 import MainButton from './MainButton';
+import { useCart } from '../CartContext';
 
 import { useLoader } from '@react-three/fiber';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
@@ -57,6 +58,7 @@ const getModelProps = (id) => {
 const ShopCard = ({ plant }) => {
     const cardRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
+    const { addToCart } = useCart();
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -120,7 +122,18 @@ const ShopCard = ({ plant }) => {
                 </div>
 
                 <div className="shopCardActions">
-                    <MainButton text="أضف للسلة" />
+                    <MainButton 
+                        text="أضف للسلة" 
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            addToCart({
+                                id: plant.id,
+                                NameAR: plant.NameAR,
+                                Price: plant.Price,
+                                Hero_Showcase_Photo: plant.Hero_Showcase_Photo
+                            });
+                        }} 
+                    />
                     <button className="shopCardSaveBtn">
                         <BookmarkSimple size={24} color="#FAFAEA" />
                     </button>

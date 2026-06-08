@@ -1,6 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
+import { useCart } from '../CartContext';
 import { ShoppingCartSimple, UserCircle } from '@phosphor-icons/react';
 import './Menu.css';
 
@@ -10,7 +11,9 @@ import close from '../Assets/Icons/x.svg';
 
 const Menu = ({ closeMenu }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { user, requireAuth } = useAuth();
+  const { cartItems, openCart } = useCart();
   
   const menuItems = [
     { title: "عن فل", link: "/About" },
@@ -50,8 +53,11 @@ const Menu = ({ closeMenu }) => {
               <UserCircle size="24" color="#082F19" weight="thin" />
             )}
           </div>
-          <div className="menu-util-icon" onClick={() => requireAuth(() => console.log('Cart'))}>
+          <div className="menu-util-icon cartIconWrapper" onClick={() => { closeMenu(); openCart(); }}>
             <ShoppingCartSimple size="24" color="#082F19" weight="thin" />
+            {cartItems.length > 0 && (
+              <span className="cartBadge">{cartItems.length}</span>
+            )}
           </div>
         </div>
         <div className="menu-header-actions">

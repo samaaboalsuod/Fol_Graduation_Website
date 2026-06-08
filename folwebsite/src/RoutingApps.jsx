@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './AuthContext';
+import { CartProvider } from './CartContext';
 import AuthModal from './Components/AuthModal';
+import CartDrawer from './Components/CartDrawer';
 
 import Home from './Pages/Home';
 import Onboarding from './Pages/Onboarding';
@@ -14,6 +16,8 @@ import Suggestions from './Pages/Suggestions';
 import PlantDetail from './Pages/PlantDetail';
 import About from './Pages/About';
 import Save from './Pages/Save';
+import CartPage from './Pages/CartPage';
+import Checkout from './Pages/Checkout';
 
 
 const RoutingApp = () => {
@@ -21,8 +25,10 @@ const RoutingApp = () => {
         <>
         
         <AuthProvider>
+        <CartProvider>
             <AuthModal />
             <BrowserRouter>
+                <CartDrawer />
 
                 <Routes>
 
@@ -37,11 +43,14 @@ const RoutingApp = () => {
                     <Route path='/Plant/:id' element={<PlantDetail />} />
                     <Route path='/About' element={<About />} />
                     <Route path='/Save' element={<Save />} />
+                    <Route path='/Cart' element={<CartPage />} />
+                    <Route path='/Checkout' element={<Checkout />} />
 
 
                 </Routes>
 
             </BrowserRouter>
+        </CartProvider>
         </AuthProvider>
 
         

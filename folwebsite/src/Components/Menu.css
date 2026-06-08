@@ -52,6 +52,28 @@
     transform: scale(1.05);
 }
 
+.cartIconWrapper {
+    position: relative;
+}
+
+.cartBadge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #1DBF53;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border: 2px solid #082F19; /* matches background or menu contrast */
+}
+
 .menu-avatar {
     width: 100%;
     height: 100%;
