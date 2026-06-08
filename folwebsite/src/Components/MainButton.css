@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    white-space: nowrap;
 
     width: fit-content;
     padding: .6rem 2.5rem;

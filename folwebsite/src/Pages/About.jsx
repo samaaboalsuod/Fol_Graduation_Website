@@ -11,6 +11,7 @@ import './About.css';
 
 import fillLogo from '../Assets/Icons/fillLogo.png';
 import decorLeaf from '../Assets/Icons/decorLeaf.png';
+import decorRoot from '../Assets/Icons/decorRoot.svg';
 
 const About = () => {
     const [titleData, setTitleData] = useState(null);
@@ -74,6 +75,8 @@ const About = () => {
 
                 {/* Decorative Leaf */}
                 <img src={decorLeaf} alt="" className="aboutDecoLeaf" />
+                <img src={decorRoot} alt="" className="aboutDecoRoot" />
+                <img src={decorLeaf} alt="" className="aboutDecoLeaf2" />
             </div>
 
             <AboutJourney />

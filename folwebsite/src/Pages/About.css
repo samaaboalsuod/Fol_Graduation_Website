@@ -122,10 +122,33 @@
     position: absolute;
     bottom: -20px;
     left: -20px;
-    width: 200px; /* Reduced to match the second photo */
+    width: 200px;
     opacity: 0.8;
     z-index: 15;
     pointer-events: none;
+}
+
+.aboutDecoRoot {
+    position: absolute;
+    top: 10%;
+    right: -5%;
+    width: 300px;
+    opacity: 0.15;
+    z-index: 1;
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+.aboutDecoLeaf2 {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 120px;
+    opacity: 0.3;
+    z-index: 1;
+    transform: rotate(-120deg);
+    pointer-events: none;
+    filter: blur(2px);
 }
 
 /* Responsive adjustments */
@@ -168,6 +191,23 @@
 
     .bubbleLeft, .bubbleTopRight, .bubbleBottomRight {
         /* Keep their unique shapes or reset if desired. Keeping shapes looks cool! */
+    }
+}
+
+@media (max-width: 480px) {
+    .aboutLogoSection {
+        gap: 15px;
+        padding: 10px;
+    }
+    .aboutMainLogo {
+        width: 180px;
+    }
+    .aboutBubble {
+        width: 100px;
+        height: 100px;
+    }
+    .aboutContent {
+        padding-top: 100px;
     }
 }
 

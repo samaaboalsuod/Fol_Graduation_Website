@@ -96,3 +96,16 @@
         margin-top: 60px;
     }
 }
+
+@media (max-width: 480px) {
+    .categories-wrapper {
+        padding: 40px 10px;
+    }
+    .categories-wrapper .section-main-title {
+        font-size: 1.4rem !important;
+    }
+    .categories-grid {
+        gap: 1.5rem;
+        margin-top: 40px;
+    }
+}

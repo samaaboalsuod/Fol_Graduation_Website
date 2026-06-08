@@ -58,3 +58,31 @@
 
     margin: 0 auto;
 }
+
+@media (max-width: 480px) {
+    .community-header {
+        top: 5%;
+        right: 0;
+        left: 0;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .community-title {
+        font-size: 1.5rem;
+    }
+    .member-counter {
+        font-size: 0.9rem;
+        justify-content: center;
+    }
+    .community-section {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 20vh;
+    }
+    .gallery-container {
+        height: 70vh;
+    }
+}

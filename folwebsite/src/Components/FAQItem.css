@@ -35,7 +35,7 @@
 }
 
 .faqQuestionBar h3 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 500;
     color: var(--lightText);
     font-family: var(--arabicFont);
@@ -125,7 +125,10 @@
         height: 64px;
         padding: 0 1.5rem;
     }
-    .faqQuestionBar h3 { font-size: 1rem; }
+    .faqQuestionBar h3 { font-size: 0.95rem; }
     .faqAnswerCard { width: 100%; }
     .answerInner { padding: 1.2rem 1.5rem; }
+    
+    .qLeft, .qRight { border-radius: 30px !important; }
+    .aLeft, .aRight { border-radius: 30px !important; }
 }

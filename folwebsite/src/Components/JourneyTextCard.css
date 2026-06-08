@@ -9,9 +9,10 @@
     color: #fff;
     width: 450px;
     max-width: 90vw;
-    display: flex;
     flex-direction: column;
     gap: 1rem;
+    position: relative;
+    z-index: 10;
 }
 
 .journeyCard h2 {

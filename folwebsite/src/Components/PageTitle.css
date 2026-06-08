@@ -1,7 +1,7 @@
 .pageTitleCont{
     width: 100%;
-
     padding: 3vw 15vw 2vw 15vw;
+    box-sizing: border-box;
 
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@
     font-family: var(--arabicFont);
     color: var(--lightText);
 
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: 700;
 
     text-align: center;
@@ -36,10 +36,23 @@
     font-family: var(--arabicFont);
     color: var(--lightText);
 
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 300;
-    max-width: 600px;
+    max-width: 800px;
+    line-height: 1.6;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .pageTitleCont {
+        padding: 5vw 5vw;
+    }
+    .pageTitleCont h2 {
+        font-size: 2.2rem;
+    }
+    .pageTitleCont h5 {
+        font-size: 1.1rem;
+    }
 }
 
 .subRow img[src=""], .subRow img:not([src]) { display: none; }

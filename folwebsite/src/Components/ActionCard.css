@@ -43,11 +43,11 @@
     z-index: 10;
 }
 
-.topRow{
+.topRow {
     width: 100%;
     display: flex;
     align-items: center;
-    gap: .8vw;
+    gap: 1rem;
 }
 
 .iconCont{

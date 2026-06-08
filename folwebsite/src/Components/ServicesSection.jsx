@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { supabase } from '../Supabase.jsx'; 
 import './ServicesSection.css';
 
+import { useNavigate } from 'react-router-dom';
 import MainButton from './MainButton';
 
 import decorRoot from '../Assets/Icons/decorRoot.svg';
@@ -11,6 +12,7 @@ const ServicesSection = () => {
   const [loading, setLoading] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const sectionRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -101,7 +103,10 @@ const ServicesSection = () => {
                 </div>
 
                 <div className="cta-container animate-pop delay-3">
-                   <MainButton text="احجز موعدك الآن" />
+                   <MainButton 
+                      text="احجز موعدك الآن" 
+                      onClick={() => navigate(`/ServiceDetail/${service.id}`)} 
+                   />
                 </div>
 
               </div>

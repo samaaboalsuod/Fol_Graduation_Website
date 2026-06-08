@@ -143,28 +143,25 @@
 }
 
 .savedPlantsGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 3rem 1.5rem; /* 3rem vertical to fit image overlap, 1.5rem horizontal */
     width: 100%;
     margin: 0 auto 4rem auto;
 }
 
 @media (max-width: 1200px) {
-    .savedPlantsGrid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+    /* Flexbox handles the layout automatically */
 }
 
 @media (max-width: 992px) {
-    .savedPlantsGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 @media (max-width: 768px) {
     .savedPlantsGrid {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: center;
     }
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../AuthContext';
 import { supabase } from '../Supabase';
+import { useNavigate } from 'react-router-dom';
 import './Nav.css';
 import Menu from './Menu';
 
@@ -13,6 +14,7 @@ const Nav = ({ hideWave }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, requireAuth } = useAuth();
   const [savedCount, setSavedCount] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
@@ -60,7 +62,13 @@ const Nav = ({ hideWave }) => {
       ))}
 
       <header>
-        <img src={logo} alt="logo" className="nav-logo" />
+        <img 
+          src={logo} 
+          alt="logo" 
+          className="nav-logo" 
+          onClick={() => navigate('/Home')} 
+          style={{ cursor: 'pointer' }} 
+        />
         
         <div className="nav-actions-container">
           {/* Burger Menu */}

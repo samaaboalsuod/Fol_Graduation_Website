@@ -354,15 +354,18 @@
 @media (max-width: 992px) {
     .horizontalScrollContainer {
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: visible;
         flex-direction: column;
-        scroll-snap-type: y mandatory;
+        scroll-snap-type: none;
+        height: auto;
     }
     
     .scrollScreen {
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: column-reverse;
+        justify-content: flex-start;
         align-items: center;
+        height: auto;
+        min-height: 100vh;
     }
     
     .overviewLeft, .overviewRight, .arLeft, .arRight {
@@ -376,5 +379,50 @@
     
     .careDecoTopLeft, .careDecoBottomRight, .careDecoHanging {
         display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .overviewRight {
+        padding: 40px 20px;
+    }
+    .pdTitle {
+        font-size: 2.5rem;
+    }
+    .pdPrice {
+        font-size: 1.2rem;
+    }
+    .careCenterText {
+        font-size: 2rem;
+        position: relative;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    .screenCare {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+    .careGrid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .pdModelViewer {
+        height: 50vh;
+        min-height: 400px;
+    }
+    .pdIdealBadge {
+        width: 100px;
+        height: 100px;
+        bottom: 10px;
+        left: 10px;
+    }
+    .pdIdealBadge span {
+        font-size: 1rem;
+    }
+    .pdAddCartBtnLeft {
+        width: 90%;
+        font-size: 1rem;
+        bottom: 20px;
     }
 }

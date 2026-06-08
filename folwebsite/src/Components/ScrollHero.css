@@ -15,7 +15,7 @@
     display: flex;
     align-items: center;
     flex-direction: column; /* Stack vertically */
-    z-index: 1; /* Lowest Layer */
+    /* z-index: 1; Removed so children can stack over 3D canvas */
 }
 
 /* Green Section */
@@ -271,5 +271,25 @@ html, body, .hero-viewport, .hero-3d-overlay {
         padding: 8px 24px !important;
         font-size: 0.9rem !important;
         bottom: 40px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .line-1 {
+        font-size: 3.5rem !important;
+    }
+    .line-2 {
+        font-size: 2.8rem !important;
+    }
+    .heroP {
+        font-size: 0.9rem;
+    }
+    .quiz-card-container {
+        padding: 15px !important;
+        border-radius: 40px 40px 40px 0px !important;
+        min-width: 280px;
+    }
+    .quiz-text {
+        font-size: 1rem;
     }
 }

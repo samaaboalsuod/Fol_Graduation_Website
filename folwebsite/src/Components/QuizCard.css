@@ -11,6 +11,9 @@
   position: absolute;
   overflow: hidden;
   bottom: 10vw;
+  z-index: 20;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 /* Texture overlay effect */
@@ -38,4 +41,16 @@
   line-height: 1.6;
   margin: 0;
   flex: 1;
+}
+
+@media (max-width: 480px) {
+  .quiz-card-container {
+    padding: 15px !important;
+    border-radius: 40px 40px 40px 0px !important;
+    min-width: 280px;
+    width: 90% !important;
+  }
+  .quiz-text {
+    font-size: 0.95rem;
+  }
 }

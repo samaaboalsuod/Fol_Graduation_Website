@@ -220,4 +220,20 @@
         display: block;
         transform: none;
     }
+}
+
+@media (max-width: 480px) {
+    .menu-item {
+        font-size: 1.2rem;
+        padding: 8px 0;
+    }
+    .menu-header {
+        margin-bottom: 1.5rem;
+    }
+    .menu-list {
+        margin-top: 1vh;
+    }
+    .sub-menu-item a {
+        font-size: 1rem;
+    }
 }

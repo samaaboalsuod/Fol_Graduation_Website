@@ -218,3 +218,23 @@
         text-align: center;
     }
 }
+
+@media (max-width: 480px) {
+    .cartPageContent {
+        padding: 5rem 1rem 1rem 1rem;
+    }
+    .cartPageHeader h1 {
+        font-size: 2.2rem;
+    }
+    .cartPageItemCard {
+        padding: 1.5rem;
+    }
+    .cartPageItemImg {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 1rem;
+    }
+    .cartSummaryCard {
+        padding: 1.5rem;
+    }
+}

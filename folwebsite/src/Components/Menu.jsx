@@ -16,6 +16,7 @@ const Menu = ({ closeMenu }) => {
   const { cartItems, openCart } = useCart();
   
   const menuItems = [
+    { title: "الرئيسية", link: "/Home" },
     { title: "عن فل", link: "/About" },
     { title: "تواصل مع فل", link: "/Contact" },
     { title: "تسوق مشتلنا", link: "/Shop" },
@@ -24,11 +25,11 @@ const Menu = ({ closeMenu }) => {
       title: "خدماتنا", 
       link: "#",
       subItems: [
-        { title: "استشارات واقعية وافتراضية", link: "#" },
-        { title: "الرحلة تبدأ بعد الشراء", link: "#" },
-        { title: "العناية أثناء غيابك", link: "#" },
-        { title: "تنسيق الحدائق", link: "#" },
-        { title: "تنسيق الهدايا", link: "#" }
+        { title: "استشارات واقعية وافتراضية", link: "/ServiceDetail/1" },
+        { title: "الرحلة تبدأ بعد الشراء", link: "/ServiceDetail/2" },
+        { title: "العناية أثناء غيابك", link: "/ServiceDetail/3" },
+        { title: "تنسيق الحدائق", link: "/ServiceDetail/4" },
+        { title: "تنسيق الهدايا", link: "/ServiceDetail/5" }
       ]
     },
     { title: "اسأل خبيرًا", link: "/Asking#ask-expert" },

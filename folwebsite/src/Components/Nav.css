@@ -63,6 +63,26 @@ nav:hover .flower-layer {
     }
 }
 
+@media (max-width: 480px) {
+    .nav-logo {
+        height: 35px;
+        width: auto;
+    }
+    
+    .nav-actions-container {
+        gap: 0.8rem;
+        margin-left: 0.5rem;
+    }
+    
+    .burger-icon {
+        width: 28px;
+    }
+    
+    header {
+        padding: 0 10px;
+    }
+}
+
 /* --- New Header Utilities --- */
 .nav-actions-container {
     display: flex;

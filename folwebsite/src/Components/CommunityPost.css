@@ -80,3 +80,18 @@
         width: 180px !important;
     }
 }
+
+@media (max-width: 480px) {
+    .post-card-wrapper {
+        width: 150px !important;
+    }
+    .post-card-inner {
+        padding: 1rem;
+    }
+    .user-name {
+        font-size: 0.8rem;
+    }
+    .post-text {
+        font-size: 0.8rem;
+    }
+}

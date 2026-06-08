@@ -4,11 +4,7 @@ import { X, CaretDown, CaretUp } from '@phosphor-icons/react';
 import MainButton from './MainButton';
 
 const FilterOverlay = ({ onClose }) => {
-    const [openTabs, setOpenTabs] = useState({ plants: true, accessories: true });
-
-    const toggleTab = (tab) => {
-        setOpenTabs(prev => ({ ...prev, [tab]: !prev[tab] }));
-    };
+    const [activeTab, setActiveTab] = useState('plants');
 
     // Plant categories extracted from DB schema
     const plantCategories = [
@@ -25,6 +21,8 @@ const FilterOverlay = ({ onClose }) => {
         { id: 'decor', name: 'إكسسوارات', options: ['أحجار زينة', 'أرفف خشبية', 'أحواض سيراميك', 'سلال خوص'] },
     ];
 
+    const currentCategories = activeTab === 'plants' ? plantCategories : accessoriesCategories;
+
     return (
         <div className="filter-overlay" onClick={onClose}>
             <div className="filter-content" onClick={e => e.stopPropagation()}>
@@ -35,45 +33,24 @@ const FilterOverlay = ({ onClose }) => {
                     </button>
                 </div>
 
+                <div className="filter-tabs-top">
+                    <button 
+                        className={`filter-tab-btn ${activeTab === 'plants' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('plants')}
+                    >
+                        نباتات
+                    </button>
+                    <button 
+                        className={`filter-tab-btn ${activeTab === 'accessories' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('accessories')}
+                    >
+                        مكملات
+                    </button>
+                </div>
+
                 <div className="filter-body">
-                    {/* Right Sidebar */}
-                    <div className="filter-sidebar">
-                        <div className="filter-accordion-item">
-                            <div className="filter-accordion-header" onClick={() => toggleTab('plants')}>
-                                <span>نباتات</span>
-                                {openTabs.plants ? <CaretUp size={16} /> : <CaretDown size={16} />}
-                            </div>
-                            {openTabs.plants && (
-                                <div className="filter-accordion-content">
-                                    {plantCategories.map(cat => (
-                                        <a href={`#section-${cat.id}`} key={cat.id} className="filter-category-link">
-                                            {cat.name}
-                                        </a>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="filter-accordion-item">
-                            <div className="filter-accordion-header" onClick={() => toggleTab('accessories')}>
-                                <span>مكملات</span>
-                                {openTabs.accessories ? <CaretUp size={16} /> : <CaretDown size={16} />}
-                            </div>
-                            {openTabs.accessories && (
-                                <div className="filter-accordion-content">
-                                    {accessoriesCategories.map(cat => (
-                                        <a href={`#section-${cat.id}`} key={cat.id} className="filter-category-link">
-                                            {cat.name}
-                                        </a>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Main Scrolling Body */}
                     <div className="filter-main">
-                        {plantCategories.map((cat, idx) => (
+                        {currentCategories.map((cat, idx) => (
                             <div key={cat.id} id={`section-${cat.id}`} className="filter-section">
                                 <h3 className="filter-section-title">{cat.name}</h3>
                                 <div className="filter-grid">
@@ -84,23 +61,7 @@ const FilterOverlay = ({ onClose }) => {
                                         </label>
                                     ))}
                                 </div>
-                                {idx < plantCategories.length - 1 && <div className="filter-divider"></div>}
-                                {idx === plantCategories.length - 1 && <div className="filter-divider"></div>}
-                            </div>
-                        ))}
-
-                        {accessoriesCategories.map((cat, idx) => (
-                            <div key={cat.id} id={`section-${cat.id}`} className="filter-section">
-                                <h3 className="filter-section-title">{cat.name}</h3>
-                                <div className="filter-grid">
-                                    {cat.options.map(opt => (
-                                        <label key={opt} className="filter-checkbox-label">
-                                            <input type="checkbox" className="filter-checkbox" />
-                                            {opt}
-                                        </label>
-                                    ))}
-                                </div>
-                                {idx < accessoriesCategories.length - 1 && <div className="filter-divider"></div>}
+                                {idx < currentCategories.length - 1 && <div className="filter-divider"></div>}
                             </div>
                         ))}
                     </div>

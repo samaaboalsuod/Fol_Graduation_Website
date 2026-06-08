@@ -43,11 +43,11 @@ const Footer = () => {
 
                 <div className='footerColumn'>
                     <h5>خدمات فل</h5>
-                    <p>استشارات واقعية وافتراضية</p>
-                    <p>الرحلة تبدأ بعد الشراء</p>
-                    <p>العناية أثناء غيابك</p>
-                    <p>تنسيق الحدائق</p>
-                    <p>تنسيق الهدايا</p>
+                    <a href="/ServiceDetail/1" style={{ textDecoration: 'none', color: 'inherit' }}><p>استشارات واقعية وافتراضية</p></a>
+                    <a href="/ServiceDetail/2" style={{ textDecoration: 'none', color: 'inherit' }}><p>الرحلة تبدأ بعد الشراء</p></a>
+                    <a href="/ServiceDetail/3" style={{ textDecoration: 'none', color: 'inherit' }}><p>العناية أثناء غيابك</p></a>
+                    <a href="/ServiceDetail/4" style={{ textDecoration: 'none', color: 'inherit' }}><p>تنسيق الحدائق</p></a>
+                    <a href="/ServiceDetail/5" style={{ textDecoration: 'none', color: 'inherit' }}><p>تنسيق الهدايا</p></a>
                 </div>
 
                 <div className='footerColumn'>

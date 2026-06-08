@@ -1,9 +1,11 @@
 import React from 'react';
 import './BubbleCard.css';
 // Assuming your MainButton is in the same Components folder
+import { useNavigate } from 'react-router-dom';
 import MainButton from './MainButton'; 
 
 const BubbleCard = ({ data, index, show }) => {
+    const navigate = useNavigate();
     // index 0 (1st) and 2 (3rd) will now be TRUE (Right Side)
     const isRight = index % 2 === 0; 
     
@@ -30,7 +32,7 @@ const BubbleCard = ({ data, index, show }) => {
                 <img src={data.HIcon} alt="" className="bubble-icon" />
                 <h3 className="bubble-title">{data.NameAR}</h3>
                 <p className="bubble-description">{data.HDescriptionAR}</p>
-                <MainButton text="احجز الآن" />
+                <MainButton text="احجز الآن" onClick={() => navigate('/Asking')} />
             </div>
         </div>
     );

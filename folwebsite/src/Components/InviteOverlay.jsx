@@ -1,9 +1,11 @@
 import React from 'react';
 import './InviteOverlay.css';
+import { useNavigate } from 'react-router-dom';
 import MainButton from './MainButton';
 import SecondButton from './SecondButton';
 
 const InviteModal = ({ post, onClose }) => {
+    const navigate = useNavigate();
     return (
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -26,7 +28,7 @@ const InviteModal = ({ post, onClose }) => {
                         <div className="modal-actions">
                             <MainButton 
                                 text="ابدأ رحلتك الآن" 
-                                onClick={() => console.log("Link to e-commerce")} 
+                                onClick={() => { navigate('/Shop'); onClose(); }} 
                             />
                             <SecondButton 
                                 text="سأستمر في الاستكشاف أولاً" 

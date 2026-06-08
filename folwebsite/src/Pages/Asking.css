@@ -145,3 +145,15 @@
         padding-bottom: 4rem;
     }
 }
+
+@media (max-width: 480px) {
+    .servicesSec .actionCardCont {
+        width: 100vw;
+    }
+    .cardsContainer {
+        gap: 1rem;
+    }
+    .generalSec {
+        padding: 2rem 1rem;
+    }
+}

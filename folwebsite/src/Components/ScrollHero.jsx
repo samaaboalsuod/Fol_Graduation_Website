@@ -6,8 +6,10 @@ import QuizCard from './QuizCard';
 import livingRoom from '../Assets/Icons/livingRoom.png'; 
 import logoSvg from '../Assets/Icons/greenLogo.svg';
 import SecondButton from './SecondButton';
+import { useNavigate } from 'react-router-dom';
 
 const ScrollHero = () => {
+  const navigate = useNavigate();
   return (
     <section className="hero-viewport">
   {/* Layer 1: Backgrounds */}
@@ -35,9 +37,9 @@ const ScrollHero = () => {
        <h2 className='reveal-text line-1'>حياة</h2>
        <h2 className='reveal-text line-2'>حقيقية</h2>
        <SecondButton 
-       text="ماذا نقدم؟" 
+       text="احصل على صديقك الأخضر" 
        className="line-3" 
-       onClick={() => console.log('Clicked!')} 
+       onClick={() => navigate('/Shop')} 
        />
     </div>
   </div>

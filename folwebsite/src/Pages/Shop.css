@@ -128,3 +128,12 @@
         justify-items: center;
     }
 }
+
+@media (max-width: 480px) {
+    .shopProductGrid {
+        gap: 1.5rem;
+    }
+    .shopContentSec {
+        padding: 2rem 1rem;
+    }
+}
